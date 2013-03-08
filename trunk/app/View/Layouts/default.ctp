@@ -29,7 +29,7 @@
 	<?php
 // 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('bootstrap.min','bootstrap-responsive.min'));
+		echo $this->Html->css(array('bootstrap.min','bootstrap-responsive.min', 'custom'));
 
 		echo $this->Html->script(array('jquery-1.9.1.min', 'bootstrap.min'));
 		
@@ -41,7 +41,24 @@
 <body>
 	<div id="container">
 		<div id="header">
-		
+			<div>
+				<?php echo $this->Html->image('sam-logo-inside.png', array('id' => 'brand-logo'))?>
+			</div>
+			<div class="header-info row-fluid">
+				<div class="span6">
+					<ul class="breadcrumb">
+					  <li><a href="javascript:void(0)">Trang chủ</a> <span class="divider">></span></li>
+					  <li class="active">Thực đơn</li>
+					</ul>
+				</div>
+				<div class="span6">
+					<div class="sys-info pull-right">
+						Xin chào <strong>Username</strong>!
+						&nbsp;
+						<?php echo $this->Html->link('Đăng xuất', array('controller' => 'users', 'action' => 'logout'))?>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
@@ -49,7 +66,7 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-		
+			<p>© Van Viet Cafe - 2013</p>
 		</div>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>

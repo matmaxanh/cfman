@@ -14,4 +14,12 @@ class HtmlController extends AppController {
 	public function home() {
 		
 	}
+	
+	public function menu() {
+		
+	}
+	
+	public function menu_add() {
+		
+	}
 }
