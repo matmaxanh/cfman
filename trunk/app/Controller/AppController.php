@@ -32,7 +32,58 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array(
-		'DebugKit.Toolbar'		
+	/**
+	 * Models
+	 *
+	 * @var array
+	 * @access public
+	 */
+	public $uses = array(
+		'User',
 	);
+	
+	/**
+	 * Components
+	 *
+	 * @var array
+	 * @access public
+	 */
+	public $components = array(
+		'Auth',
+		'Session',
+		'Cookie',
+		'DebugKit.Toolbar',
+	);
+	
+	/**
+	 * beforeFilter
+	 *
+	 * @return void
+	 */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->authorize = array('Controller');
+		$this->Auth->autoRedirect = false;
+		$this->Auth->logoutRedirect = array('controller'=> 'users', 'action'=> 'login');
+		$this->Auth->authError = __('You are not authorized to access that location.');
+		if (isset($this->request->params['admin'])) {
+			$this->Auth->userScope = array('User.group'=> GROUP_ADMINISTRATOR);
+			$this->Auth->loginRedirect = '/admin';
+		}else {
+			$this->Auth->userScope = array('User.group'=> GROUP_STAFF);
+			$this->Auth->loginRedirect = '/';
+		}
+	}
+	
+	public function isAuthorized($user = null) {
+		// Only admins can access admin functions
+		if (isset($this->request->params['admin'])) {
+			$this->layout = 'admin';
+			if(intval($user['group']) !== GROUP_ADMINISTRATOR){
+				$this->Session->destroy();
+				return false;
+			}
+		}
+		return true;
+	}
 }
