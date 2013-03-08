@@ -24,6 +24,16 @@ class UsersController extends AppController {
 	}
 	
 /**
+ * logout method
+ *
+ * @return void
+ */	
+	public function logout(){
+		$this->Session->setFlash(__('Log out successful.'), 'default', array('class' => 'success'));
+		$this->redirect($this->Auth->logout());
+	}
+	
+/**
  * dashboard method
  *
  * @return void
