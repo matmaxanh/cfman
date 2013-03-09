@@ -7,7 +7,7 @@
 
 		<div class="body">
 			<div>
-				<label for="username"><?php echo __('Tài khoản(demo)')?></label> 
+				<label for="username"><?php echo __('Tài khoản(admin)')?></label> 
 				<?php echo $this->Form->input('username', array('type' => 'text', 'placeholder' => __('Tài khoản'), 'label' => false, 'div' => false))?>
 			</div>
 			<div>

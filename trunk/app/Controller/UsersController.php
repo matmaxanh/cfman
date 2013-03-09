@@ -29,7 +29,6 @@ class UsersController extends AppController {
  * @return void
  */	
 	public function logout(){
-		$this->Session->setFlash(__('Log out successful.'), 'default', array('class' => 'success'));
 		$this->redirect($this->Auth->logout());
 	}
 	
@@ -39,6 +38,40 @@ class UsersController extends AppController {
  * @return void
  */	
 	public function dashboard() {
+		
+	}
+	
+/**
+ * login method
+ *
+ * @return void
+ */
+	public function admin_login() {
+		$this->layout = 'login';
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirectUrl());
+			} else {
+				$this->Session->setFlash($this->Auth->authError, 'default', array('alert alert-error'), 'auth');
+				$this->redirect($this->Auth->loginAction);
+			}
+		}
+	}
+	
+/**
+ * logout method
+ *
+ * @return void
+ */	
+	public function admin_logout(){
+		$this->redirect($this->Auth->logout());
+	}
+/**
+ * dashboard method
+ *
+ * @return void
+ */	
+	public function admin_dashboard() {
 		
 	}
 
