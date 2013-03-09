@@ -47,15 +47,15 @@
 			<div class="header-info row-fluid">
 				<div class="span6">
 					<ul class="breadcrumb">
-					  <li><a href="javascript:void(0)">Trang chủ</a> <span class="divider">></span></li>
+					  <li><a href="javascript:void(0)"><?php echo __('Trang chủ')?></a><span class="divider">></span></li>
 					  <li class="active">Thực đơn</li>
 					</ul>
 				</div>
 				<div class="span6">
 					<div class="sys-info pull-right">
-						Xin chào <strong>Username</strong>!
+						<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
 						&nbsp;
-						<?php echo $this->Html->link('Đăng xuất', array('controller' => 'users', 'action' => 'logout'))?>
+						<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
 					</div>
 				</div>
 			</div>
