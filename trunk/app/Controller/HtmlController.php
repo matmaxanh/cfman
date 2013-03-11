@@ -11,7 +11,7 @@ class HtmlController extends AppController {
 		$this->layout = 'login';
 	}
 	
-	public function home() {
+	public function index() {
 		
 	}
 	
