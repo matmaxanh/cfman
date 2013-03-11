@@ -46,3 +46,16 @@ form.form-horizontal div.control-group label.control-label {
 	margin: 0 auto;
 }
 
+.index-main {
+	padding: 0 10%;
+}
+
+.row-menu {
+	margin: 10px 10px;
+	text-align: center;	
+}
+
+.menu-btn {
+	margin: 10px 10px;
+	min-width: 150px;
+}
