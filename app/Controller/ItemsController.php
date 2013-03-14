@@ -6,8 +6,6 @@ App::uses('AppController', 'Controller');
  * @property Item $Item
  */
 class ItemsController extends AppController {
-	var $components = array('PaginateForm');
-	var $helpers = array('FormPaginator');
 
 /**
  * index method
@@ -113,11 +111,36 @@ class ItemsController extends AppController {
 		$categories = $this->Item->Category->find('list');
 		
 		$this->Item->recursive = 0;
-		$this->paginate = array(
+		$this->paginate = array('Item'=> array(
 			'paramType'=> 'querystring',
 			'limit'=> ROWS_PER_PAGE,
-		);
-		$items = $this->paginate();
+		));
+		$conditions = array();
+		foreach($this->params['url'] as $key=> $value){
+			if(empty($value)){
+				continue;
+			}
+			switch($key){
+				case 'name':
+					$conditions['OR'] = array(
+						'Item.name1 LIKE'=> '%'.$value.'%',
+						'Item.name2 LIKE'=> '%'.$value.'%',
+						'Item.name3 LIKE'=> '%'.$value.'%',
+					);
+					break;
+				case 'category_id':
+					$conditions['category_id'] = $value;
+					break;
+				case 'cost_from':
+					$conditions['cost >='] = $value;
+					break;
+				case 'cost_to':
+					$conditions['cost <='] = $value;
+					break;
+			}
+		}
+		$this->data = $this->params['url'];
+		$items = $this->paginate('Item', $conditions);
 		$this->set(compact('categories', 'items'));
 	}
 

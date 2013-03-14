@@ -5,6 +5,18 @@
 </li>
 <li class="active"><?php echo __('Thực đơn') ?></li>
 <?php echo $this->end() ?>
+<?php
+$options = array();
+foreach($this->params['url'] as $key=> $value){
+	if(!empty($value)){
+		$options[$key] = $value;
+	}
+} 
+$this->Paginator->options(array(
+	'convertKeys'=> array_keys($options),
+    'url' => $options
+));
+?>
 
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Danh sách'), '/admin/menu')?></li>
@@ -13,7 +25,7 @@
 <div>
 	<h4><?php echo __('Tìm kiếm') ?></h4>
 	
-	<?php echo $this->Form->create('Item', array('class'=> 'form-inline', 'inputDefaults'=> array('div'=> false, 'label'=> false)))?>
+	<?php echo $this->Form->create('Item', array('type'=> 'get', 'class'=> 'form-inline', 'inputDefaults'=> array('div'=> false, 'label'=> false)))?>
 		<div style="margin: 10px 0px 10px 0; ">
 			<?php echo $this->Form->select('category_id', $categories)?>
 			&nbsp;
@@ -68,8 +80,8 @@
  
 <ul class="pager">
   <li class="previous">
-    <?php echo $this->FormPaginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
+    <?php echo $this->Paginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
   </li>
   <li class="next">
-    <?php echo $this->FormPaginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
+    <?php echo $this->Paginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
   </li>
