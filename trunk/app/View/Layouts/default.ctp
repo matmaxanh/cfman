@@ -41,12 +41,27 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<div>
-				<?php echo $this->Html->image('sam-logo-inside.png', array('id' => 'brand-logo'))?>
+			<div style="text-align: center">
+				<?php
+					$logoUrl = ($this->name == 'Html') ? array('controller' => 'Html', 'action' => 'index') : '/'; 
+					echo $this->Html->link(
+						$this->Html->image('sam-logo-inside.png', array('id' => 'brand-logo')),
+						$logoUrl,
+						array('escape' => false)
+					);
+				?>
 			</div>
 			<div class="header-info row-fluid">
 				<div class="span6">
-					<ul class="breadcrumb"><?php echo $this->fetch('breadcrumbs') ?></ul>
+					<ul class="breadcrumb">
+						<?php if ($this->name = 'Html'):?>
+							<li><a href="">Trang chủ</a> <span class="divider">/</span></li>
+							<li><a href="#">Chức năng</a> <span class="divider">/</span></li>
+							<li class="active">Data</li>
+						<?php else:?>
+							<?php echo $this->fetch('breadcrumbs') ?>
+						<?php endif;?>
+					</ul>
 				</div>
 				<div class="span6">
 					<div class="sys-info pull-right">

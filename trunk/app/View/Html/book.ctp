@@ -1,8 +1,12 @@
+<ul class="nav nav-tabs">
+	<li class="active"><?php echo $this->Html->link('Quản lý', array('action' => 'book'))?></li>
+	<li><?php echo $this->Html->link('Đặt chỗ', array('action' => 'book_add'))?></li>
+</ul>
 <h4>Quản lý đặt chỗ</h4>
 <br>
 <div>
 	<form class="form-inline">
-			<div style="margin: 10px 0px 10px 0; ">
+			<div style="margin: 10px 0px 10px 0;">
 				<select class="input-medium">
 				  <option>Tên bàn</option>
 				  <option>Bàn 2</option>

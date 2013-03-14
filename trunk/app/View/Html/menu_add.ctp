@@ -64,7 +64,7 @@
 			</div>
 			<div class="span6 new-item-image">
 				<h5>Hình đại diện sản phẩm</h5>
-				<img data-src="holder.js/140x140" class="img-polaroid center-div" style="width: 140px; height: 140px;">
+				<img data-src="holder.js/300x300" class="img-polaroid center-div" style="width: 300px; height: 300px;">
 				<input type="file" style="display: block; margin: 0 auto;">
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 		<div class="control-group">
 			<div class="controls">
 				<div class="controls">
-					<button class="btn btn-primary" type="submit">Tạo sản phẩm</button>
+					<button class="btn btn-success" type="submit">Tạo sản phẩm</button>
 					<button class="btn" type="reset">Reset</button>
 				</div>
 			</div>

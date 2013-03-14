@@ -59,3 +59,30 @@ form.form-horizontal div.control-group label.control-label {
 	margin: 10px 10px;
 	min-width: 150px;
 }
+
+.grid {
+/* 	background-color: #0aa; */
+	margin: 0px 0px 20px 0px;
+/* 	max-width: 50%; */
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+img.desaturate{
+	/*Support Chrome 18+*/
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%); 
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%); 
+	-o-filter: grayscale(100%);
+	filter: url(desaturate.svg#greyscale); /*Support Firefox 4+*/
+	filter: gray; /*Support IE 6-9*/
+	-webkit-filter: grayscale(1); /*Support old Webkit*/
+}
+
+img.order-table {
+	max-height: 200px
+}

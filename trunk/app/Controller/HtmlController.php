@@ -30,4 +30,8 @@ class HtmlController extends AppController {
 	public function book_add() {
 		;
 	}
+	
+	public function order() {
+		
+	}
 }
