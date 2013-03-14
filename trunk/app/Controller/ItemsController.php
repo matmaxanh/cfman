@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Item $Item
  */
 class ItemsController extends AppController {
+	var $components = array('PaginateForm');
+	var $helpers = array('FormPaginator');
 
 /**
  * index method
@@ -111,6 +113,10 @@ class ItemsController extends AppController {
 		$categories = $this->Item->Category->find('list');
 		
 		$this->Item->recursive = 0;
+		$this->paginate = array(
+			'paramType'=> 'querystring',
+			'limit'=> ROWS_PER_PAGE,
+		);
 		$items = $this->paginate();
 		$this->set(compact('categories', 'items'));
 	}

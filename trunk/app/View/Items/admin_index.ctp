@@ -1,3 +1,11 @@
+<?php echo $this->start('breadcrumbs')?>
+<li>
+	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
+	<span class="divider">&nbsp;&gt;</span>
+</li>
+<li class="active"><?php echo __('Thực đơn') ?></li>
+<?php echo $this->end() ?>
+
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Danh sách'), '/admin/menu')?></li>
 	<li><?php echo $this->Html->link(__('Thêm mới'), '/admin/menu-add')?></li>
@@ -44,13 +52,13 @@
 			<tr>
 				<td><?php echo $i + $k ?></td>
 				<td><?php echo h($typeOptions[$item['Item']['type']])?></td>
-				<td><?php echo h($item['Item']['name1'])?></td>
+				<td><?php echo $this->Html->link(h($item['Item']['name1']), '/admin/menu-edit/'.$item['Item']['id'], array('escape'=> false))?></td>
 				<td><?php echo h($item['Item']['name2'])?></td>
 				<td><?php echo h($item['Item']['name3'])?></td>
-				<td><?php echo h($item['Item']['cost'])?></td>
+				<td><?php echo CakeNumber::currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
 				<td>
-					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Sửa'), '/admin/menu-edit', array('escape'=> false, 'class'=> 'pull-left'))?>
-					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Xóa'), '/admin/menu-delete', array('escape'=> false, 'class'=> 'pull-right'))?>
+					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Sửa'), '/admin/menu-edit/'.$item['Item']['id'], array('escape'=> false, 'class'=> 'pull-left'))?>
+					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Xóa'), '/admin/menu-delete/'.$item['Item']['id'], array('escape'=> false, 'class'=> 'pull-right'))?>
 				</td>
 			</tr>
 			<?php endforeach; ?>
@@ -60,8 +68,8 @@
  
 <ul class="pager">
   <li class="previous">
-    <?php echo $this->Paginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
+    <?php echo $this->FormPaginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
   </li>
   <li class="next">
-    <?php echo $this->Paginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
+    <?php echo $this->FormPaginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
   </li>
