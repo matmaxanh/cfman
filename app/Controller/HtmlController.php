@@ -22,4 +22,12 @@ class HtmlController extends AppController {
 	public function menu_add() {
 		
 	}
+	
+	public function book() {
+		;
+	}
+	
+	public function book_add() {
+		;
+	}
 }
