@@ -3,8 +3,8 @@
 	<li><?php echo $this->Html->link('Thêm mới', array('action' => 'menu_add'))?></li>
 </ul>
 <div>
-	<h4>Tìm kiếm</h4>
-	
+	<h4>Quản lý thực đơn</h4>
+	<br>
 	<form class="form-inline">
 		<div style="margin: 10px 0px 10px 0; ">
 			<select>
