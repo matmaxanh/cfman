@@ -55,6 +55,12 @@
 						<input type="text" id="gia" placeholder="Giá sản phẩm">
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label" for="mota">Mô tả</label>
+					<div class="controls">
+						<textarea rows="9" cols="3"></textarea>
+					</div>
+				</div>
 			</div>
 			<div class="span6 new-item-image">
 				<h5>Hình đại diện sản phẩm</h5>

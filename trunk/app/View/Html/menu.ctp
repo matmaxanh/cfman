@@ -23,19 +23,10 @@
 			&nbsp;
 			<button class="btn btn-warning"><i class="icon-search"></i>Tìm kiếm</button>
 		</div>
-		
-		
 	</form>
 </div>
 <hr>
-<ul class="pager">
-  <li class="previous">
-    <a href="#">&larr; Older</a>
-  </li>
-  <li class="next">
-    <a href="#">Newer &rarr;</a>
-  </li>
-</ul>
+<?php echo $this->Element('html_next_prev');?>
 <div>
 	<table class="table table-bordered table-striped menu-table">
 		<thead>
@@ -90,12 +81,5 @@
 	</table>
 </div>
  
-<ul class="pager">
-  <li class="previous">
-    <a href="#">&larr; Older</a>
-  </li>
-  <li class="next">
-    <a href="#">Newer &rarr;</a>
-  </li>
-</ul>
+<?php echo $this->Element('html_next_prev');?>
 
