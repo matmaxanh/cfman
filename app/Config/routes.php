@@ -32,6 +32,8 @@
 	Router::connect('/menu', array('controller' => 'items', 'action' => 'index'));
 	Router::connect('/admin/menu', array('admin'=> true, 'controller' => 'items', 'action' => 'index'));
 	Router::connect('/admin/menu-add', array('admin'=> true, 'controller' => 'items', 'action' => 'add'));
+	Router::connect('/admin/menu-edit/*', array('admin'=> true, 'controller' => 'items', 'action' => 'edit'));
+	Router::connect('/admin/menu-delete/*', array('admin'=> true, 'controller' => 'items', 'action' => 'delete'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

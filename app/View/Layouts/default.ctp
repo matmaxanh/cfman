@@ -46,10 +46,7 @@
 			</div>
 			<div class="header-info row-fluid">
 				<div class="span6">
-					<ul class="breadcrumb">
-					  <li><a href="javascript:void(0)"><?php echo __('Trang chủ')?></a><span class="divider">></span></li>
-					  <li class="active">Thực đơn</li>
-					</ul>
+					<ul class="breadcrumb"><?php echo $this->fetch('breadcrumbs') ?></ul>
 				</div>
 				<div class="span6">
 					<div class="sys-info pull-right">

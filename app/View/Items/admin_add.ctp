@@ -1,3 +1,11 @@
+<?php echo $this->start('breadcrumbs')?>
+<li>
+	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
+	<span class="divider">&nbsp;&gt;</span>
+</li>
+<li class="active"><?php echo __('Thực đơn') ?></li>
+<?php echo $this->end() ?>
+
 <ul class="nav nav-tabs">
 	<li><?php echo $this->Html->link(__('Danh sách'), '/admin/menu')?></li>
 	<li class="active"><?php echo $this->Html->link(__('Thêm mới'), '/admin/menu-add')?></li>
@@ -64,5 +72,5 @@
 				</div>
 			</div>
 		</div>
-	</form>
+	<?php echo $this->Form->end() ?>
 </div>
