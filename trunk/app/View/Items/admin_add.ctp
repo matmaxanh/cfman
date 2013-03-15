@@ -56,10 +56,16 @@
 						<?php echo $this->Form->input('cost', array('placeholder'=> __('Giá sản phẩm')))?>
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label"><?php echo __('Mô tả') ?></label>
+					<div class="controls">
+						<?php echo $this->Form->textarea('description', array('rows'=> 9, 'cols'=> 3))?>
+					</div>
+				</div>
 			</div>
 			<div class="span6 new-item-image">
 				<h5>Hình đại diện sản phẩm</h5>
-				<img data-src="holder.js/140x140" class="img-polaroid center-div" style="width: 140px; height: 140px;">
+				<img data-src="holder.js/300x300" class="img-polaroid center-div" style="width: 300px; height: 300px;">
 				<input type="file" style="display: block; margin: 0 auto;">
 			</div>
 		</div>

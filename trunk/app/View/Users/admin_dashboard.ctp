@@ -12,7 +12,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-shopping-cart icon-white"></i>&nbsp;'.__('Đơn đặt hàng'), 
-						array('controllers'=> 'orders', 'action'=> 'index'),
+						array('controller'=> 'orders', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>
@@ -20,7 +20,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-book icon-white"></i>&nbsp;'.__('Đặt chỗ'),
-						array('controllers'=> 'books', 'action'=> 'index'),
+						array('controller'=> 'books', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>
@@ -30,7 +30,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-hdd icon-white"></i>&nbsp;'.__('Kho hàng'),
-						array('controllers'=> 'stores', 'action'=> 'index'),
+						array('controller'=> 'stores', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>
@@ -56,7 +56,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-user icon-white"></i>&nbsp;'.__('Nhân viên'),
-						array('controllers'=> 'users', 'action'=> 'index'),
+						array('controller'=> 'users', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>

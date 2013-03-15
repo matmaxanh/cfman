@@ -185,6 +185,8 @@ class ItemsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
+		$this->log($_FILES, 'debug');
+		$this->log($this->request->data, 'debug');
 		if (!$this->Item->exists($id)) {
 			throw new NotFoundException(__('Invalid item'));
 		}

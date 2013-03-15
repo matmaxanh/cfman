@@ -54,7 +54,7 @@
 			<div class="header-info row-fluid">
 				<div class="span6">
 					<ul class="breadcrumb">
-						<?php if ($this->name = 'Html'):?>
+						<?php if ($this->name == 'Html'):?>
 							<li><a href="">Trang chủ</a> <span class="divider">/</span></li>
 							<li><a href="#">Chức năng</a> <span class="divider">/</span></li>
 							<li class="active">Data</li>
