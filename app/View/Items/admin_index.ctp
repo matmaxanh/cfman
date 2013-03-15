@@ -6,15 +6,15 @@
 <li class="active"><?php echo __('Thực đơn') ?></li>
 <?php echo $this->end() ?>
 <?php
-$options = array();
+$params = array();
 foreach($this->params['url'] as $key=> $value){
 	if(!empty($value)){
-		$options[$key] = $value;
+		$params[$key] = $value;
 	}
-} 
+}
 $this->Paginator->options(array(
-	'convertKeys'=> array_keys($options),
-    'url' => $options
+	'convertKeys'=> array_merge(array_keys($params),array('page')),
+    'url' => $params
 ));
 ?>
 
@@ -25,16 +25,16 @@ $this->Paginator->options(array(
 <div>
 	<h4><?php echo __('Tìm kiếm') ?></h4>
 	
-	<?php echo $this->Form->create('Item', array('type'=> 'get', 'class'=> 'form-inline', 'inputDefaults'=> array('div'=> false, 'label'=> false)))?>
+	<?php echo $this->Form->create('Item', array('type'=> 'get', 'class'=> 'form-inline', 'inputDefaults'=> array('div'=> false, 'label'=> false), 'id'=> 'formItem'))?>
 		<div style="margin: 10px 0px 10px 0; ">
-			<?php echo $this->Form->select('category_id', $categories)?>
+			<?php echo $this->Form->select('category_id', $categories, array('value'=> (isset($_GET['category_id'])?$_GET['category_id']:'')))?>
 			&nbsp;
-			<?php echo $this->Form->input('name', array('placeholder'=> __('Tên / Tiếng Anh / Tiếng Pháp')))?>
+			<?php echo $this->Form->input('name', array('value'=> (isset($_GET['name'])?$_GET['name']:''), 'placeholder'=> __('Tên / Tiếng Anh / Tiếng Pháp')))?>
 		</div>
 		
 		<div style="margin: 10px 0px 10px 0; ">
-			<?php echo $this->Form->input('cost_from', array('placeholder'=> __('Giá từ')))?> - 
-			<?php echo $this->Form->input('cost_to', array('placeholder'=> __('Tới khoảng')))?>
+			<?php echo $this->Form->input('cost_from', array('value'=> (isset($_GET['cost_from'])?$_GET['cost_from']:''), 'placeholder'=> __('Giá từ')))?> - 
+			<?php echo $this->Form->input('cost_to', array('value'=> (isset($_GET['cost_to'])?$_GET['cost_to']:''), 'placeholder'=> __('Tới khoảng')))?>
 			&nbsp;
 			<button class="btn btn-warning"><i class="icon-search"></i>Tìm kiếm</button>
 		</div>
@@ -85,3 +85,14 @@ $this->Paginator->options(array(
   <li class="next">
     <?php echo $this->Paginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
   </li>
+</ul>
+<script type="text/javascript">
+$('#formItem').submit(function() {
+	$('#formItem input, #formItem select').each(function(){
+		if($(this).val() === ''){
+			$(this).attr('name','');
+		}
+	});
+//    $('#formItem input[value=""]').attr('name', '');
+});
+</script>

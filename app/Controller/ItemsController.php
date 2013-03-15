@@ -139,7 +139,6 @@ class ItemsController extends AppController {
 					break;
 			}
 		}
-		$this->data = $this->params['url'];
 		$items = $this->paginate('Item', $conditions);
 		$this->set(compact('categories', 'items'));
 	}
