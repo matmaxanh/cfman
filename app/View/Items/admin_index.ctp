@@ -47,6 +47,7 @@ $this->Paginator->options(array(
 			<tr>
 				<th><?php echo __('STT') ?></th>
 				<th><?php echo __('Loại') ?></th>
+				<th width="75">&nbsp;</th>
 				<th><?php echo __('Tên') ?></th>
 				<th><?php echo __('Tên Tiếng Anh') ?></th>
 				<th><?php echo __('Tên Tiếng Pháp') ?></th>
@@ -64,6 +65,11 @@ $this->Paginator->options(array(
 			<tr>
 				<td><?php echo $i + $k ?></td>
 				<td><?php echo h($typeOptions[$item['Item']['type']])?></td>
+				<th><?php if(!empty($item['Item']['image'])){
+					echo $this->Html->image('menu/'.$item['Item']['image'], array('style'=> 'width:75px;height:75px'));
+				}else{
+					echo $this->Html->image('75x75.gif', array('style'=> 'width:75px;height:75px'));
+				}?>
 				<td><?php echo $this->Html->link(h($item['Item']['name1']), '/admin/menu-edit/'.$item['Item']['id'], array('escape'=> false))?></td>
 				<td><?php echo h($item['Item']['name2'])?></td>
 				<td><?php echo h($item['Item']['name3'])?></td>
