@@ -39,4 +39,12 @@ class UserTest extends CakeTestCase {
 		parent::tearDown();
 	}
 
+/**
+ * testValidatePasswdConfirm method
+ *
+ * @return void
+ */
+	public function testValidatePasswdConfirm() {
+	}
+
 }

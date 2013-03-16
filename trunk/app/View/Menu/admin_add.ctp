@@ -7,8 +7,8 @@
 <?php echo $this->end() ?>
 
 <ul class="nav nav-tabs">
-	<li><?php echo $this->Html->link(__('Danh sách'), '/admin/menu')?></li>
-	<li class="active"><?php echo $this->Html->link(__('Thêm mới'), '/admin/menu-add')?></li>
+	<li><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'menu'))?></li>
+	<li class="active"><?php echo $this->Html->link(__('Thêm mới'), array('controller'=> 'menu', 'action'=> 'add'))?></li>
 </ul>
 <div>
 	<h4><?php echo __('Thêm mới thực đơn') ?></h4>
@@ -74,7 +74,7 @@
 			<div class="controls">
 				<div class="controls">
 					<?php echo $this->Form->button(__('Tạo sản phẩm'), array('class'=> 'btn btn-primary'))?>
-					<?php echo $this->Html->link('Reset', '/admin/menu-add', array('class'=> 'btn'))?>
+					<?php echo $this->Html->link('Reset', array('controller'=> 'menu', 'action'=> 'add'), array('class'=> 'btn'))?>
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,9 @@ App::uses('AppController', 'Controller');
  *
  * @property Item $Item
  */
-class ItemsController extends AppController {
+class MenuController extends AppController {
+	
+	public $uses = array('Item');
 
 /**
  * index method
@@ -16,7 +18,36 @@ class ItemsController extends AppController {
 		$categories = $this->Item->Category->find('list');
 		
 		$this->Item->recursive = 0;
-		$items = $this->paginate();
+		$this->paginate = array('Item'=> array(
+			'paramType'=> 'querystring',
+			'limit'=> ROWS_PER_PAGE,
+			'order'=> 'Item.created DESC'
+		));
+		$conditions = array();
+		foreach($this->params['url'] as $key=> $value){
+			if(empty($value)){
+				continue;
+			}
+			switch($key){
+				case 'name':
+					$conditions['OR'] = array(
+						'Item.name1 LIKE'=> '%'.$value.'%',
+						'Item.name2 LIKE'=> '%'.$value.'%',
+						'Item.name3 LIKE'=> '%'.$value.'%',
+					);
+					break;
+				case 'category_id':
+					$conditions['category_id'] = $value;
+					break;
+				case 'cost_from':
+					$conditions['cost >='] = $value;
+					break;
+				case 'cost_to':
+					$conditions['cost <='] = $value;
+					break;
+			}
+		}
+		$items = $this->paginate('Item', $conditions);
 		$this->set(compact('categories', 'items'));
 	}
 
@@ -33,73 +64,6 @@ class ItemsController extends AppController {
 		}
 		$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
 		$this->set('item', $this->Item->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Item->create();
-			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
-			}
-		}
-		$categories = $this->Item->Category->find('list');
-		$this->set(compact('categories'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Item->exists($id)) {
-			throw new NotFoundException(__('Invalid item'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
-			$this->request->data = $this->Item->find('first', $options);
-		}
-		$categories = $this->Item->Category->find('list');
-		$this->set(compact('categories'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Item->id = $id;
-		if (!$this->Item->exists()) {
-			throw new NotFoundException(__('Invalid item'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Item->delete()) {
-			$this->Session->setFlash(__('Item deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Item was not deleted'));
-		$this->redirect(array('action' => 'index'));
 	}
 
 /**
@@ -168,10 +132,10 @@ class ItemsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Item->create();
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'), 'default', array('alert alert-success'));
+				$this->Session->setFlash(__('The item has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The item could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		}
 		$categories = $this->Item->Category->find('list');
@@ -191,10 +155,10 @@ class ItemsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'));
+				$this->Session->setFlash(__('The item has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The item could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		} else {
 			$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
@@ -219,10 +183,10 @@ class ItemsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Item->delete()) {
-			$this->Session->setFlash(__('Item deleted'));
+			$this->Session->setFlash(__('Item deleted'), 'default', array('class'=> 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Item was not deleted'));
+		$this->Session->setFlash(__('Item was not deleted'), 'default', array('class'=> 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

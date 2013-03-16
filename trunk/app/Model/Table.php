@@ -1,22 +1,38 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * User Model
+ * Table Model
  *
+ * @property Zone $Zone
+ * @property Booking $Booking
  * @property Order $Order
- * @property WorkingSchedule $WorkingSchedule
  */
-class User extends AppModel {
+class Table extends AppModel {
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'username';
+	public $displayField = 'name';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Zone' => array(
+			'className' => 'Zone',
+			'foreignKey' => 'zone_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 
 /**
  * hasMany associations
@@ -24,9 +40,9 @@ class User extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Order' => array(
-			'className' => 'Order',
-			'foreignKey' => 'user_id',
+		'Booking' => array(
+			'className' => 'Booking',
+			'foreignKey' => 'table_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -37,9 +53,9 @@ class User extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'WorkingSchedule' => array(
-			'className' => 'WorkingSchedule',
-			'foreignKey' => 'user_id',
+		'Order' => array(
+			'className' => 'Order',
+			'foreignKey' => 'table_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
