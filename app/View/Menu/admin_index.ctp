@@ -19,8 +19,8 @@ $this->Paginator->options(array(
 ?>
 
 <ul class="nav nav-tabs">
-	<li class="active"><?php echo $this->Html->link(__('Danh sách'), '/admin/menu')?></li>
-	<li><?php echo $this->Html->link(__('Thêm mới'), '/admin/menu-add')?></li>
+	<li class="active"><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'menu'))?></li>
+	<li><?php echo $this->Html->link(__('Thêm mới'), array('controller'=> 'menu', 'action'=> 'add'))?></li>
 </ul>
 <div>
 	<h4><?php echo __('Tìm kiếm') ?></h4>
@@ -70,13 +70,13 @@ $this->Paginator->options(array(
 				}else{
 					echo $this->Html->image('75x75.gif', array('style'=> 'width:75px;height:75px'));
 				}?>
-				<td><?php echo $this->Html->link(h($item['Item']['name1']), '/admin/menu-edit/'.$item['Item']['id'], array('escape'=> false))?></td>
+				<td><?php echo $this->Html->link(h($item['Item']['name1']), array('controller'=> 'menu', 'action'=> 'edit', $item['Item']['id']), array('escape'=> false))?></td>
 				<td><?php echo h($item['Item']['name2'])?></td>
 				<td><?php echo h($item['Item']['name3'])?></td>
 				<td><?php echo CakeNumber::currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
 				<td>
-					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Sửa'), '/admin/menu-edit/'.$item['Item']['id'], array('escape'=> false, 'class'=> 'pull-left'))?>
-					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Xóa'), '/admin/menu-delete/'.$item['Item']['id'], array('escape'=> false, 'class'=> 'pull-right'))?>
+					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Sửa'), array('controller'=> 'menu', 'action'=> 'edit', $item['Item']['id']), array('escape'=> false, 'class'=> 'pull-left'))?>
+					<?php echo $this->Form->postLink('<i class="icon-edit"></i>&nbsp;'.__('Xóa'), array('controller'=> 'menu', 'action'=> 'delete', $item['Item']['id']), array('escape'=> false, 'class'=> 'pull-right'))?>
 				</td>
 			</tr>
 			<?php endforeach; ?>
@@ -99,6 +99,5 @@ $('#formItem').submit(function() {
 			$(this).attr('name','');
 		}
 	});
-//    $('#formItem input[value=""]').attr('name', '');
 });
 </script>

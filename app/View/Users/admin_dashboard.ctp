@@ -20,7 +20,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-book icon-white"></i>&nbsp;'.__('Đặt chỗ'),
-						array('controller'=> 'books', 'action'=> 'index'),
+						array('controller'=> 'book', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>

@@ -70,35 +70,17 @@ class Item extends AppModel {
 			),
 		),
 		'thumbnail' => array(
-			'checksizeedit' => array(
+			'checksize' => array(
                 'rule' => array('checkSize',false),
                 'message' => 'Invalid File size',
-                'on' => 'update'
-            ),
-            'checktypeedit' =>array(
-                'rule' => array('checkType',false),
-                'message' => 'Invalid File type',
-                'on' => 'update'
-            ),
-            'checkuploadedit' =>array(
-                'rule' => array('checkUpload', false),
-                'message' => 'Invalid file',
-                'on' => 'update'
-            ),
-            'checksize' => array(
-                'rule' => array('checkSize',true),
-                'message' => 'Invalid File size',
-                'on' => 'create'
             ),
             'checktype' =>array(
-                'rule' => array('checkType',true),
+                'rule' => array('checkType',false),
                 'message' => 'Invalid File type',
-                'on' => 'create'
             ),
             'checkupload' =>array(
-                'rule' => array('checkUpload', true),
+                'rule' => array('checkUpload', false),
                 'message' => 'Invalid file',
-                'on' => 'create'
             ),
 		)
 	);
@@ -160,7 +142,7 @@ class Item extends AppModel {
 
     public function checkType($data, $required = false,$allowedMime = null){
         $data = array_shift($data);
-        if(!$required && $data['error'] == 4){
+        if(!$required && ($data['error'] == 4)){
             return true;
         }
         if(empty($allowedMime)){
@@ -175,10 +157,10 @@ class Item extends AppModel {
 
     public function checkSize($data, $required = false){
         $data = array_shift($data);
-        if(!$required && $data['error'] == 4){
+        if(!$required && ($data['error'] == 4)){
             return true;
         }
-        if($data['size'] == 0||$data['size']/1024 > 2050){
+        if(($data['size'] == 0) || ($data['size']/1024 > 2050)){
             return false;
         }
         return true;
