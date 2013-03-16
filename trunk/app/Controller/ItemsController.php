@@ -114,6 +114,7 @@ class ItemsController extends AppController {
 		$this->paginate = array('Item'=> array(
 			'paramType'=> 'querystring',
 			'limit'=> ROWS_PER_PAGE,
+			'order'=> 'Item.created DESC'
 		));
 		$conditions = array();
 		foreach($this->params['url'] as $key=> $value){
@@ -185,8 +186,6 @@ class ItemsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		$this->log($_FILES, 'debug');
-		$this->log($this->request->data, 'debug');
 		if (!$this->Item->exists($id)) {
 			throw new NotFoundException(__('Invalid item'));
 		}

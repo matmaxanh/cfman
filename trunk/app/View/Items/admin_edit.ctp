@@ -9,7 +9,7 @@
 <div>
 	<h4><?php echo __('Sửa thực đơn') ?></h4>
 	<br>
-	<?php echo $this->Form->create('Item', array('class'=> 'form-horizontal', 'inputDefaults'=> array('label'=> false, 'div'=> false)))?>
+	<?php echo $this->Form->create('Item', array('class'=> 'form-horizontal', 'inputDefaults'=> array('label'=> false, 'div'=> false), 'type'=> 'file'))?>
 	<?php echo $this->Form->hidden('id') ?>
 		<div class="row-fluid">
 			<div class="span6 new-item-info">
@@ -62,8 +62,12 @@
 			</div>
 			<div class="span6 new-item-image">
 				<h5>Hình đại diện sản phẩm</h5>
-				<img data-src="holder.js/300x300" class="img-polaroid center-div" style="width: 300px; height: 300px;">
-				<input type="file" style="display: block; margin: 0 auto;">
+				<?php if(isset($this->data['Item']['image']) && !empty($this->data['Item']['image'])){
+					echo $this->Html->image('menu/'.$this->data['Item']['image'], array('class'=> 'img-polaroid center-div', 'style'=> 'width: 300px; height: 300px;'));
+				}else{
+					echo $this->Html->image('300x300.gif', array('class'=> 'img-polaroid center-div', 'style'=> 'width: 300px; height: 300px;'));
+				}?>
+				<?php echo $this->Form->file('thumbnail') ?>
 			</div>
 		</div>
 		<hr>

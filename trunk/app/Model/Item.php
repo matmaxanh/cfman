@@ -69,6 +69,38 @@ class Item extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'thumbnail' => array(
+			'checksizeedit' => array(
+                'rule' => array('checkSize',false),
+                'message' => 'Invalid File size',
+                'on' => 'update'
+            ),
+            'checktypeedit' =>array(
+                'rule' => array('checkType',false),
+                'message' => 'Invalid File type',
+                'on' => 'update'
+            ),
+            'checkuploadedit' =>array(
+                'rule' => array('checkUpload', false),
+                'message' => 'Invalid file',
+                'on' => 'update'
+            ),
+            'checksize' => array(
+                'rule' => array('checkSize',true),
+                'message' => 'Invalid File size',
+                'on' => 'create'
+            ),
+            'checktype' =>array(
+                'rule' => array('checkType',true),
+                'message' => 'Invalid File type',
+                'on' => 'create'
+            ),
+            'checkupload' =>array(
+                'rule' => array('checkUpload', true),
+                'message' => 'Invalid file',
+                'on' => 'create'
+            ),
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -108,5 +140,71 @@ class Item extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	public function checkUpload($data, $required = false){
+        $data = array_shift($data);
+        if(!$required && $data['error'] == 4){
+            return true;
+        }
+        //debug($data);
+        if($required && $data['error'] !== 0){
+            return false;
+        }
+        if($data['size'] == 0){
+            return false;
+        }
+        return true;
+
+        //if($required and $data)
+    }
+
+    public function checkType($data, $required = false,$allowedMime = null){
+        $data = array_shift($data);
+        if(!$required && $data['error'] == 4){
+            return true;
+        }
+        if(empty($allowedMime)){
+            $allowedMime = array('image/gif','image/jpeg','image/pjpeg','image/png');
+        }
+
+        if(!in_array($data['type'], $allowedMime)){
+            return false;
+        }
+        return true;
+    }
+
+    public function checkSize($data, $required = false){
+        $data = array_shift($data);
+        if(!$required && $data['error'] == 4){
+            return true;
+        }
+        if($data['size'] == 0||$data['size']/1024 > 2050){
+            return false;
+        }
+        return true;
+    }
+	
+	public function beforeSave($options = array()) {
+	    if (isset($this->data['Item']['thumbnail']) && !empty($this->data['Item']['thumbnail']['tmp_name'])) {
+	    	switch($this->data['Item']['thumbnail']['type']){
+	    		case 'type/gif':
+	    			$type = 'gif';
+	    			break;
+	    		case 'type/png':
+	    			$type = 'png';
+	    			break;
+	    		default:
+	    			$type = 'jpg';
+	    	}
+	    	$filename = mt_rand(0,255)."_".time().".".$type;
+	    	$destination = ITEM_IMAGE_PATH.DS.$filename;
+	    	if(!file_exists(ITEM_IMAGE_PATH)){
+	    		mkdir(ITEM_IMAGE_PATH);
+	    	}
+	    	move_uploaded_file($this->data['Item']['thumbnail']['tmp_name'], $destination);
+	        $this->data['Item']['image'] = $filename;
+	    }
+	    return true;
+	}
 
 }
