@@ -34,4 +34,20 @@ class HtmlController extends AppController {
 	public function order() {
 		
 	}
+	
+	public function store() {
+		
+	}
+	
+	public function others() {
+		
+	}
+	
+	public function user() {
+		
+	}
+	
+	public function user_add() {
+		
+	}
 }

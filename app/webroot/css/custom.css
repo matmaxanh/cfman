@@ -15,7 +15,9 @@ html {
 
 #footer {
 	padding-top: 10px;
+	padding-bottom: 10px;
 	border-top: 1px solid #C8C8C8 ;
+	text-align: center;
 }
 
 #brand-logo {
@@ -84,5 +86,15 @@ img.desaturate{
 }
 
 img.order-table {
-	max-height: 200px
+	max-height: 150px
+}
+
+p.table-title {
+/* 	font-family: ImpaCt, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif; */
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+img.new-icon {
+	padding-bottom: 5px;
 }
