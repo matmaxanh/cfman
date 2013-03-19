@@ -45,7 +45,7 @@
 				<?php
 					$logoUrl = ($this->name == 'Html') ? array('controller' => 'Html', 'action' => 'index') : '/'; 
 					echo $this->Html->link(
-						$this->Html->image('sam-logo-inside.png', array('id' => 'brand-logo')),
+						$this->Html->image('sam-logo-inside.jpg', array('id' => 'brand-logo')),
 						$logoUrl,
 						array('escape' => false)
 					);
