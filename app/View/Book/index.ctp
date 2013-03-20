@@ -1,3 +1,7 @@
+<?php 
+echo $this->Html->script(array('jquery-ui', 'jquery-ui-timepicker-addon', 'jquery-ui-sliderAccess'), array('inline'=> false));
+echo $this->Html->css(array('jquery-ui', 'jquery-ui-timepicker-addon'), 'stylesheet', array('inline'=> false));
+?>
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Quản lý'), array('controller' => 'book'))?></li>
 	<li><?php echo $this->Html->link(__('Đặt chỗ'), array('controller'=> 'book', 'action' => 'add'))?></li>
@@ -5,21 +9,21 @@
 <h4><?php echo __('Quản lý đặt chỗ') ?></h4>
 <br>
 <div>
-	<?php echo $this->Form->create('Booking', array('type'=> 'get', 'class'=> 'form-inline', 'inputDefaults'=> array('div'=> false, 'label'=> false), 'id'=> 'formBook'))?>
+	<?php echo $this->Form->create('Booking', array('type'=> 'get', 'class'=> 'form-inline', 'novalidate'=> true, 'inputDefaults'=> array('div'=> false, 'label'=> false), 'id'=> 'formBook'))?>
 			<div style="margin: 10px 0px 10px 0;">
-				<?php echo $this->Form->select('table_id', $tables, array('class'=> 'input-medium', 'empty'=> __('Tên bàn')))?>
+				<?php echo $this->Form->select('table_id', $tables, array('class'=> 'input-medium', 'empty'=> __('Tên bàn'), 'value'=> (isset($_GET['table_id'])?$_GET['table_id']:'')))?>
 				&nbsp;
-				<?php echo $this->Form->input('booker_name', array('placeholder'=> __('Tên người đặt')))?>
+				<?php echo $this->Form->input('booker_name', array('placeholder'=> __('Tên người đặt'), 'value'=> (isset($_GET['booker_name'])?$_GET['booker_name']:'')))?>
 				&nbsp;
-				<?php echo $this->Form->input('booker_contact', array('placeholder'=> __('SDT người đặt')))?>
+				<?php echo $this->Form->input('booker_contact', array('placeholder'=> __('SDT người đặt'), 'value'=> (isset($_GET['booker_contact'])?$_GET['booker_contact']:'')))?>
 			</div>
 			
 			<div style="margin: 10px 0px 10px 0; ">
-				<?php echo $this->Form->input('book_day', array('type'=> 'text', 'placeholder'=> __('Ngày đặt')))?>
+				<?php echo $this->Form->input('book_day', array('type'=> 'text', 'placeholder'=> __('Ngày đặt'), 'id'=> 'book_day_input', 'value'=> (isset($_GET['book_day'])?$_GET['book_day']:'')))?>
 				&nbsp;
-				<?php echo $this->Form->input('created', array('type'=> 'text', 'placeholder'=> __('Ngày nhận đặt')))?>
+				<?php echo $this->Form->input('receive_day', array('type'=> 'text', 'placeholder'=> __('Ngày nhận đặt'), 'id'=> 'book_receive_day_input', 'value'=> (isset($_GET['receive_day'])?$_GET['receive_day']:'')))?>
 				&nbsp;
-				<?php echo $this->Form->input('received_by', array('placeholder'=> __('Người nhận đặt')))?>
+				<?php echo $this->Form->input('received_by', array('placeholder'=> __('Người nhận đặt'), 'value'=> (isset($_GET['received_by'])?$_GET['received_by']:'')))?>
 				&nbsp;
 				<?php echo $this->Form->button('<i class="icon-search"></i>'.__('Tìm kiếm'), array('escape'=> false, 'class'=> 'btn btn-warning'))?>
 			</div>
@@ -87,11 +91,16 @@
   </li>
 </ul>
 <script type="text/javascript">
-$('#formBook').submit(function() {
-	$('#formBook input, #formBook select').each(function(){
-		if($(this).val() === ''){
-			$(this).attr('name','');
-		}
+$(document).ready(function(){
+	$("#book_day_input, #book_receive_day_input").datepicker({
+		'dateFormat':'dd/mm/yy'
+	});
+	$('#formBook').submit(function() {
+		$('#formBook input, #formBook select').each(function(){
+			if($(this).val() === ''){
+				$(this).attr('name','');
+			}
+		});
 	});
 });
 </script>
