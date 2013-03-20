@@ -46,7 +46,6 @@ class BookController extends AppController {
 					break;
 			}
 		}
-		$this->log($conditions, 'debug');
 		$bookings = $this->paginate('Booking', $conditions);
 		$this->set(compact('tables', 'bookings'));
 	}
