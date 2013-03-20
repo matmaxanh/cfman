@@ -17,7 +17,37 @@ class BookController extends AppController {
 	public function index() {
 		$tables = $this->Booking->Table->find('list');
 		$this->Booking->recursive = 0;
-		$bookings = $this->paginate();
+		$this->paginate = array('Booking'=> array(
+			'paramType'=> 'querystring',
+			'limit'=> ROWS_PER_PAGE,
+			'order'=> 'Booking.created DESC'
+		));
+		$conditions = array();
+		foreach($this->params['url'] as $key=> $value){
+			if(empty($value)){
+				continue;
+			}
+			$value = urldecode($value);
+			switch($key){
+				case 'booker_name':
+				case 'booker_contact':
+					$conditions['Booking.'.$key.' LIKE'] = '%'.$value.'%';
+					break;
+				case 'table_id':
+					$conditions['Booking.table_id'] = $value;
+					break;
+				case 'book_day':
+					$date = date_create_from_format('d/m/Y', $value);
+					$conditions['DATE(Booking.time_from)'] = date_format($date, 'Y-m-d');
+					break;
+				case 'receive_day':
+					$date = date_create_from_format('d/m/Y', $value);
+					$conditions['DATE(Booking.created)'] = date_format($date, 'Y-m-d');
+					break;
+			}
+		}
+		$this->log($conditions, 'debug');
+		$bookings = $this->paginate('Booking', $conditions);
 		$this->set(compact('tables', 'bookings'));
 	}
 
