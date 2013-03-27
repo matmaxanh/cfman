@@ -98,3 +98,60 @@ p.table-title {
 img.new-icon {
 	padding-bottom: 5px;
 }
+
+div.table-object-group {
+	padding: 0 10%;
+}
+
+div.table-object {
+	height:50px;
+	width:100px;
+	border: 1px solid #005;
+	border-radius:50px / 25px;
+	display: inline-block;
+	color: #fff;
+	margin: 0 10px 10px 0;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+   	-moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+div.to-small {
+	height: 25px;
+	width: 50px;
+}
+
+div.to-empty {
+	color: #000;
+}
+
+div.to-ordering {
+	background-color: #F9A124;
+}
+
+div.to-served {
+	background-color: #7AC17A;
+}
+
+div.to-waiting {
+	background-color: #DC6D68;
+}
+
+p.to-name {
+	padding: 15px 30px;
+	min-width: 45px;
+}
+
+p.to-name-small {
+	padding: 3px 15px;
+	font-size: 0.75em;
+}
+
+ul.to-explain{
+	display: inline-block;
+	list-style: none;
+}
+
+ul.to-explain li {
+	margin-bottom: 5px;
+}

@@ -1,90 +1,201 @@
 <h4>Quản lý Order</h4>
 <br>
-<div class="row-fluid">
-	<div class="span2">&nbsp;</div>
-	<div class="span8 container">
-		<div class="row">
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table')),
-						'/',
-						array('escape' => false)
-				)?>
-				<p class="table-title"><img src="../img/new.gif" class="new-icon">&nbsp;Bàn 1</p>
+<div>
+	<div class="accordion" id="accordion2">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#col1">Trạng thái chung</a>
 			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate'))?>
-				<p class="table-title">Bàn 2</p>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table')),
-						'/',
-						array('escape' => false)
-				)?>
-				<p class="table-title">Bàn 3</p>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate'))?>
-				<p class="table-title">Bàn 4</p>
+			<div id="col1" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					<div class="table-object-group">
+						<div class="table-object to-served">
+							<p class="to-name">5 Bàn</p>
+						</div>
+						<div class="table-object to-waiting">
+							<p class="to-name">2 Bàn</p>
+						</div>
+						<div class="table-object to-ordering">
+							<p class="to-name">3 Bàn</p>
+						</div>
+						<div class="table-object to-empty">
+							<p class="to-name">10 Bàn</p>
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table')),
-						'/',
-						array('escape' => false)
-				)?>
-				<p class="table-title">Bàn 5</p>
+		
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#col2">Trạng thái chi tiết</a>
 			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table')),
-						'/',
-						array('escape' => false)
-				)?>
-				<p class="table-title"><img src="../img/new.gif" class="new-icon">&nbsp;Bàn 6</p>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate'))?>
-				<p class="table-title">Bàn 7</p>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate'))?>
-				<p class="table-title">Bàn 8</p>
+			<div id="col2" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<fieldset>
+						<legend>Zone I</legend>
+						<div class="table-object-group">
+							<div class="table-object to-ordering">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-waiting">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-served">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-ordering">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-waiting">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-served">
+								<p class="to-name">Bàn 1</p>
+							</div>
+						</div>		
+					</fieldset>
+					
+					<fieldset>
+						<legend>Zone II</legend>
+						<div class="table-object-group">
+							<div class="table-object to-ordering">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-waiting">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-served">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-ordering">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-empty">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-waiting">
+								<p class="to-name">Bàn 1</p>
+							</div>
+							<div class="table-object to-served">
+								<p class="to-name">Bàn 1</p>
+							</div>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate')),
-						'/',
-						array('escape' => false)
-				)?>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate')),
-						'/',
-						array('escape' => false)
-				)?>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table')),
-						'/',
-						array('escape' => false)
-				)?>
-			</div>
-			<div class="span3 grid">
-				<?php echo $this->Html->link(
-						$this->Html->image('sam-table.jpg', array('class' => 'order-table desaturate')),
-						'/',
-						array('escape' => false)
-				)?>
-			</div>
-		</div>
+		
+		
 	</div>
-	<div class="span2">&nbsp;</div>
+
+<!-- 
+	<fieldset>
+		<legend>Trạng thái cửa hàng</legend>
+		<div class="table-object-group">
+			<div class="table-object to-served">
+				<p class="to-name">5 Bàn</p>
+			</div>
+			<div class="table-object to-waiting">
+				<p class="to-name">2 Bàn</p>
+			</div>
+			<div class="table-object to-ordering">
+				<p class="to-name">3 Bàn</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">10 Bàn</p>
+			</div>
+		</div>		
+	</fieldset>
+	
+	<fieldset>
+		<legend>Zone I</legend>
+		<div class="table-object-group">
+			<div class="table-object to-ordering">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-waiting">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-served">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-ordering">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-waiting">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-served">
+				<p class="to-name">Bàn 1</p>
+			</div>
+		</div>		
+	</fieldset>
+	
+	<fieldset>
+		<legend>Zone II</legend>
+		<div class="table-object-group">
+			<div class="table-object to-ordering">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-waiting">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-served">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-ordering">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-empty">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-waiting">
+				<p class="to-name">Bàn 1</p>
+			</div>
+			<div class="table-object to-served">
+				<p class="to-name">Bàn 1</p>
+			</div>
+		</div>
+	</fieldset>
 </div>
+-->
+
+<hr>
+<p style="float:left">**Chú thích :</p>
+<ul class="to-explain">
+	<li><div class="table-object to-small to-empty"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn trống</li>
+	<li><div class="table-object to-small to-ordering"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đang gọi đồ</li>
+	<li><div class="table-object to-small to-waiting"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đang chờ đồ</li>
+	<li><div class="table-object to-small to-served"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đã được phục vụ</li>
+</ul>
