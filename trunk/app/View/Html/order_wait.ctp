@@ -53,7 +53,6 @@ $(document).ready(function() {
 	</fieldset>
 </div>
 
-
 <div id="modal-order" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalOrder" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -65,23 +64,52 @@ $(document).ready(function() {
 				<tr>
 					<th>Tên món</th>
 					<th>Số lượng</th>
+					<th>Trạng thái</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr class="success">
 					<td>Cafe Nâu - Đá</td>
 					<td>1</td>
+					<td>Đã phục vụ</td>
 				</tr>
-				<tr>
+				<tr class="success">
 					<td>Lipton Bạc Hà</td>
 					<td>2</td>
+					<td>Đã phục vụ</td>
 				</tr>
-				<tr>
+				<tr class="success">
 					<td>Kem tươi</td>
-					<td>1</td>	
+					<td>1</td>
+					<td>Đã phục vụ</td>	
+				</tr>
+				<tr class="error">
+					<td>Cafe Nâu</td>
+					<td>1</td>
+					<td>Hủy</td>	
+				</tr>
+				<tr class="warning">
+					<td>Mỳ tôm</td>
+					<td>1</td>
+					<td>Đang chuyển ra</td>	
+				</tr>
+				<tr class="warning">
+					<td>Bún chó</td>
+					<td>1</td>
+					<td>Đang chuyển ra</td>	
+				</tr>
+				<tr class="info">
+					<td>Sữa chua</td>
+					<td>3</td>
+					<td>Chưa phục vụ</td>	
+				</tr>
+				<tr class="info">
+					<td>Cafe Đen</td>
+					<td>1</td>
+					<td>Chưa phục vụ</td>	
 				</tr>
 				<tr>
-					<td rowspan="2" colspan="2">
+					<td rowspan="3" colspan="3">
 						<strong>Ghi chú :&nbsp;</strong><textarea rows="2" cols="2" style="width: 80%; height: 80px;"></textarea>
 					</td>
 				</tr>
