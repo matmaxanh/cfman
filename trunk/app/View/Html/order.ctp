@@ -4,8 +4,12 @@ $(document).ready(function() {
 		$('#modal-order').modal();
 	});
 	
-	$('div.to-waiting > a.to-name, div.to-served > a.to-name').click(function(e) {
+	$('div.to-served > a.to-name').click(function(e) {
 		$('#modal-order-info').modal();
+	});
+	
+	$('div.to-waiting > a.to-name').click(function(e) {
+		$('#modal-order-info2').modal();
 	});
 });
 <?php echo $this->Html->scriptEnd();?>
@@ -217,20 +221,59 @@ $(document).ready(function() {
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr class="success">
 					<td>Cafe Nâu - Đá</td>
 					<td>1</td>
 					<td>Đã phục vụ</td>
 				</tr>
-				<tr>
+				<tr class="success">
 					<td>Lipton Bạc Hà</td>
 					<td>2</td>
 					<td>Đã phục vụ</td>
 				</tr>
-				<tr>
+				<tr class="success">
 					<td>Kem tươi</td>
 					<td>1</td>
 					<td>Đã phục vụ</td>	
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" data-dismiss="modal"><i class="icon-white icon-ok"></i>Tắt Popup</button>
+	</div>
+</div>
+
+
+<div id="modal-order-info2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalOrderInfo2" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="modalOrderInfo2">Order #xxx / Bàn #yyy</h3>
+	</div>
+	<div class="modal-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Tên món</th>
+					<th>Số lượng</th>
+					<th>Trạng thái</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success">
+					<td>Cafe Nâu - Đá</td>
+					<td>1</td>
+					<td>Đã phục vụ</td>
+				</tr>
+				<tr class="success">
+					<td>Lipton Bạc Hà</td>
+					<td>2</td>
+					<td>Đã phục vụ</td>
+				</tr>
+				<tr class="warning">
+					<td>Kem tươi</td>
+					<td>1</td>
+					<td>Đang chuyển ra</td>	
 				</tr>
 			</tbody>	
 		</table>
