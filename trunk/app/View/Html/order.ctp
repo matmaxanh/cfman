@@ -1,4 +1,22 @@
-<h4>Quản lý Order</h4>
+<?php echo $this->Html->scriptStart();?>
+$(document).ready(function() {
+	$('div.to-ordering > a.to-name').click(function(e) {
+		$('#modal-order').modal();
+	});
+	
+	$('div.to-waiting > a.to-name, div.to-served > a.to-name').click(function(e) {
+		$('#modal-order-info').modal();
+	});
+});
+<?php echo $this->Html->scriptEnd();?>
+
+<ul class="nav nav-tabs">
+	<li class="active"><?php echo $this->Html->link('Quản lý chung', array('action' => 'order'))?></li>
+	<li><?php echo $this->Html->link('Order chờ duyệt', array('action' => 'order_wait'))?></li>
+	<li><?php echo $this->Html->link('Nhân viên khu vực', array('action' => 'order_waiter'))?></li>
+</ul>
+
+<h4>Quản lý chung</h4>
 <br>
 <div>
 	<div class="accordion" id="accordion2">
@@ -36,31 +54,31 @@
 						<legend>Zone I</legend>
 						<div class="table-object-group">
 							<div class="table-object to-ordering">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-waiting">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-served">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-ordering">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-waiting">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-served">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 						</div>		
 					</fieldset>
@@ -69,133 +87,122 @@
 						<legend>Zone II</legend>
 						<div class="table-object-group">
 							<div class="table-object to-ordering">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-waiting">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-served">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-ordering">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-empty">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-waiting">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 							<div class="table-object to-served">
-								<p class="to-name">Bàn 1</p>
+								<a class="to-name">Bàn 1</a>
 							</div>
 						</div>
 					</fieldset>
 				</div>
 			</div>
 		</div>
-		
-		
 	</div>
-
-<!-- 
-	<fieldset>
-		<legend>Trạng thái cửa hàng</legend>
-		<div class="table-object-group">
-			<div class="table-object to-served">
-				<p class="to-name">5 Bàn</p>
-			</div>
-			<div class="table-object to-waiting">
-				<p class="to-name">2 Bàn</p>
-			</div>
-			<div class="table-object to-ordering">
-				<p class="to-name">3 Bàn</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">10 Bàn</p>
-			</div>
-		</div>		
-	</fieldset>
-	
-	<fieldset>
-		<legend>Zone I</legend>
-		<div class="table-object-group">
-			<div class="table-object to-ordering">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-waiting">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-served">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-ordering">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-waiting">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-served">
-				<p class="to-name">Bàn 1</p>
-			</div>
-		</div>		
-	</fieldset>
-	
-	<fieldset>
-		<legend>Zone II</legend>
-		<div class="table-object-group">
-			<div class="table-object to-ordering">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-waiting">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-served">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-ordering">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-empty">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-waiting">
-				<p class="to-name">Bàn 1</p>
-			</div>
-			<div class="table-object to-served">
-				<p class="to-name">Bàn 1</p>
-			</div>
-		</div>
-	</fieldset>
 </div>
--->
 
 <hr>
 <p style="float:left">**Chú thích :</p>
 <ul class="to-explain">
 	<li><div class="table-object to-small to-empty"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn trống</li>
-	<li><div class="table-object to-small to-ordering"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đang gọi đồ</li>
+	<li><div class="table-object to-small to-ordering"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đang gọi đồ / chờ duyệt Order</li>
 	<li><div class="table-object to-small to-waiting"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đang chờ đồ</li>
 	<li><div class="table-object to-small to-served"><p class="to-name-small">Bàn</p></div>&nbsp;Bàn đã được phục vụ</li>
 </ul>
+
+
+
+<div id="modal-order" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalOrder" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="modalOrder">Order #xxx / Bàn #yyy</h3>
+	</div>
+	<div class="modal-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Tên món</th>
+					<th>Số lượng</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cafe Nâu - Đá</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Lipton Bạc Hà</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>Kem tươi</td>
+					<td>1</td>	
+				</tr>
+				<tr>
+					<td rowspan="2" colspan="2">
+						<strong>Ghi chú :&nbsp;</strong><textarea rows="2" cols="2" style="width: 80%; height: 80px;"></textarea>
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" data-dismiss="modal"><i class="icon-white icon-ok"></i>Duyệt</button>
+		<button class="btn btn-danger" data-dismiss="modal"><i class="icon-white icon-remove"></i>Hủy</button>
+	</div>
+</div>
+
+
+<div id="modal-order-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalOrderInfo" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="modalOrderInfo">Order #xxx / Bàn #yyy</h3>
+	</div>
+	<div class="modal-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Tên món</th>
+					<th>Số lượng</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cafe Nâu - Đá</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Lipton Bạc Hà</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>Kem tươi</td>
+					<td>1</td>	
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" data-dismiss="modal"><i class="icon-white icon-ok"></i>Tắt Popup</button>
+	</div>
+</div>

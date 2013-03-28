@@ -35,6 +35,14 @@ class HtmlController extends AppController {
 		
 	}
 	
+	public function order_wait() {
+		
+	}
+	
+	public function order_waiter() {
+		
+	}
+	
 	public function store() {
 		
 	}
