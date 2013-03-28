@@ -142,6 +142,23 @@ p.to-name {
 	min-width: 45px;
 }
 
+a.to-name {
+	min-width: 45px;
+	padding: 15px 30px;
+	display: inline-block;
+	border-radius:50px / 25px;
+	text-decoration: none;
+	color: #fff;
+}
+
+div.to-empty > a.to-name {
+	color: #000;
+}
+
+a:hover.to-name {
+	cursor: pointer;
+}
+
 p.to-name-small {
 	padding: 3px 15px;
 	font-size: 0.75em;
