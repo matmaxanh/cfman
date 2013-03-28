@@ -15,6 +15,10 @@ class HtmlController extends AppController {
 		
 	}
 	
+	public function sale() {
+		
+	}
+	
 	public function menu() {
 		
 	}
@@ -48,6 +52,10 @@ class HtmlController extends AppController {
 	}
 	
 	public function others() {
+		
+	}
+	
+	public function others_customer() {
 		
 	}
 	

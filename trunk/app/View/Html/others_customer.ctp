@@ -1,28 +1,28 @@
 <?php echo $this->Html->scriptStart();?>
 $(document).ready(function() {
-	$('#new-supplier').click(function(e) {
-		$('#modal-new-supplier').modal();
+	$('#new-vip').click(function(e) {
+		$('#modal-new-vip').modal();
 	});
 });
 <?php echo $this->Html->scriptEnd();?>
 
 <ul class="nav nav-tabs">
-	<li class="active"><?php echo $this->Html->link('Nhà cung cấp', array('action' => 'others'))?></li>
-	<li><?php echo $this->Html->link('Khách hàng', array('action' => 'others_customer'))?></li>
+	<li><?php echo $this->Html->link('Nhà cung cấp', array('action' => 'others'))?></li>
+	<li class="active"><?php echo $this->Html->link('Khách hàng', array('action' => 'others_customer'))?></li>
 </ul>
 
-<h4>Quản lý Nhà cung cấp</h4>
+<h4>Quản lý Khách hàng</h4>
 <br>
 
 <div style="margin-bottom: 5px;">
-	<button class="btn btn-info" id="new-supplier"><i class="icon-white icon-plus-sign"></i>Thêm mới</button>
+	<button class="btn btn-info" id="new-vip"><i class="icon-white icon-plus-sign"></i>Thêm mới</button>
 </div>
 <div>
 	<table class="table table-bordered table-striped menu-table">
 		<thead>
 			<tr>
-				<th>Tên NCC</th>
-				<th>Loại sản phẩm</th>
+				<th>Tên khách hàng</th>
+				<th>Sản phẩm ưa thích</th>
 				<th>Số DT</th>
 				<th>Ghi chú</th>
 				<th>Thao tác</th>
@@ -63,29 +63,24 @@ $(document).ready(function() {
 </div>
 
 
-<div id="modal-new-supplier" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalNewSupplier" aria-hidden="true">
+<div id="modal-new-vip" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalNewCus" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="modalNewSupplier">Thêm nhà cung cấp mới</h3>
+		<h3 id="modalNewCus">Thêm VIP</h3>
 	</div>
 	<form class="form-horizontal">
 		<div class="modal-body">
 				<div class="control-group">
-					<label class="control-label">Loại sản phẩm</label>
+					<label class="control-label" for="ten">Tên khách hàng</label>
 					<div class="controls">
-						<select>
-							<option>Hoa quả, Rượu, Thuốc ...</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
+						<input type="text" id="ten" placeholder="Tên khách hàng">
 					</div>
 				</div>
+				
 				<div class="control-group">
-					<label class="control-label" for="ten">Tên nhà cung cấp</label>
+					<label class="control-label" for="fav-item">Sản phẩm ưa thích</label>
 					<div class="controls">
-						<input type="text" id="ten" placeholder="Tên nhà cung cấp">
+						<input type="text" id="fav-item" placeholder="Sản phẩm ưa thích">
 					</div>
 				</div>
 				
