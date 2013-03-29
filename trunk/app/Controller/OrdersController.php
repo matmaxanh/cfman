@@ -73,12 +73,19 @@ class OrdersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->Order->exists($id)) {
-			throw new NotFoundException(__('Invalid order'));
+	public function view($tableId = null) {
+		if($this->request->is('ajax')){
+			$this->layout = 'ajax';
 		}
-		$options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
-		$this->set('order', $this->Order->find('first', $options));
+		$options = array(
+			'contain'=> array('OrderItem.Item', 'Table.name'),
+			'conditions' => array('Order.table_id' => $tableId, 'DATE(Order.created)'=> date('Y-m-d'), 'Order.status !='=> STATUS_ORDER_CLOSE),
+		);
+		$order = $this->Order->find('first', $options);
+		$this->set(compact('order'));
+		if($this->request->is('ajax')){
+			$this->render('view_popup');
+		}
 	}
 
 /**

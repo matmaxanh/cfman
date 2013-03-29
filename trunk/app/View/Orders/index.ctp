@@ -1,15 +1,15 @@
 <?php echo $this->Html->scriptStart();?>
 $(document).ready(function() {
-	$('div.to-ordering > a.to-name').click(function(e) {
-		$('#modal-order').modal();
-	});
-	
-	$('div.to-served > a.to-name').click(function(e) {
-		$('#modal-order-info').modal();
-	});
-	
-	$('div.to-waiting > a.to-name').click(function(e) {
-		$('#modal-order-info2').modal();
+	$('div.table-object > a.to-name').click(function(e) {
+		$('#modal').html('');
+		var tableId = $(this).attr('rel');
+		$.ajax({
+			'url': '<?php echo $this->Html->url(array('controller'=> 'orders', 'action'=> 'view')) ?>' + '/' + tableId,
+			success: function(rsp){
+				$('#modal').html(rsp);
+				$('#modal').modal('show');
+			}			
+		});
 	});
 });
 <?php echo $this->Html->scriptEnd();?>
@@ -53,7 +53,7 @@ $(document).ready(function() {
 						<div class="table-object-group">
 							<?php foreach($zone['tables'] as $table) : ?>
 							<div class="table-object to-<?php echo $table['status'] ?>">
-								<a class="to-name"><?php echo $table['name'] ?></a>
+								<a class="to-name" rel="<?php echo $table['id'] ?>"><?php echo $table['name'] ?></a>
 							</div>
 							<?php endforeach; ?>
 						</div>		
@@ -76,73 +76,7 @@ $(document).ready(function() {
 
 
 
-<div id="modal-order" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalOrder" aria-hidden="true">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="modalOrder">Order #xxx / Bàn #yyy</h3>
-	</div>
-	<div class="modal-body">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Tên món</th>
-					<th>Số lượng</th>
-					<th>Trạng thái</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="success">
-					<td>Cafe Nâu - Đá</td>
-					<td>1</td>
-					<td>Đã phục vụ</td>
-				</tr>
-				<tr class="success">
-					<td>Lipton Bạc Hà</td>
-					<td>2</td>
-					<td>Đã phục vụ</td>
-				</tr>
-				<tr class="success">
-					<td>Kem tươi</td>
-					<td>1</td>
-					<td>Đã phục vụ</td>	
-				</tr>
-				<tr class="error">
-					<td>Cafe Nâu</td>
-					<td>1</td>
-					<td>Hủy</td>	
-				</tr>
-				<tr class="warning">
-					<td>Mỳ tôm</td>
-					<td>1</td>
-					<td>Đang chuyển ra</td>	
-				</tr>
-				<tr class="warning">
-					<td>Bún chó</td>
-					<td>1</td>
-					<td>Đang chuyển ra</td>	
-				</tr>
-				<tr class="info">
-					<td>Sữa chua</td>
-					<td>3</td>
-					<td>Chưa phục vụ</td>	
-				</tr>
-				<tr class="info">
-					<td>Cafe Đen</td>
-					<td>1</td>
-					<td>Chưa phục vụ</td>	
-				</tr>
-				<tr>
-					<td rowspan="3" colspan="3">
-						<strong>Ghi chú :&nbsp;</strong><textarea rows="2" cols="2" style="width: 80%; height: 80px;"></textarea>
-					</td>
-				</tr>
-			</tbody>	
-		</table>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" data-dismiss="modal"><i class="icon-white icon-ok"></i>Duyệt</button>
-		<button class="btn btn-danger" data-dismiss="modal"><i class="icon-white icon-remove"></i>Hủy</button>
-	</div>
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 </div>
 
 
