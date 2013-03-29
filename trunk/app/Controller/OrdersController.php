@@ -25,6 +25,11 @@ class OrdersController extends AppController {
 			'ordering'=> 0,
 			'empty'=> 0,
 		);
+		if(isset($_GET['filter'])){
+			$isFilter = true;
+		}else{
+			$isFilter = false;
+		}
 		//get data for each zone.
 		$zones = $this->Zone->find('all');
 		$zoneData = array();
@@ -34,6 +39,9 @@ class OrdersController extends AppController {
 			}
 			$tables = array();
 			foreach($zone['Table'] as $table){
+				if($isFilter && isset($orders[$table['id']]) && ($orders[$table['id']] != $_GET['filter'])){
+					continue;
+				}
 				//check current status of each table
 				if(isset($orders[$table['id']])){
 					switch($orders[$table['id']]){
@@ -64,6 +72,9 @@ class OrdersController extends AppController {
 			);
 		}
 		$this->set(compact('zoneData', 'tableStatuses'));
+		if($isFilter){
+			$this->render('filter');
+		}
 	}
 
 /**
@@ -82,6 +93,9 @@ class OrdersController extends AppController {
 			'conditions' => array('Order.table_id' => $tableId, 'DATE(Order.created)'=> date('Y-m-d'), 'Order.status !='=> STATUS_ORDER_CLOSE),
 		);
 		$order = $this->Order->find('first', $options);
+		if(empty($order)){
+			throw NotFoundException('Don\'t have any order');
+		}
 		$this->set(compact('order'));
 		if($this->request->is('ajax')){
 			$this->render('view_popup');
