@@ -81,8 +81,29 @@ class UsersController extends AppController {
  * @return void
  */
 	public function admin_index() {
+		$groups = array();
+		
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$this->paginate = array('User'=> array(
+			'paramType'=> 'querystring',
+			'limit'=> ROWS_PER_PAGE,
+			'order'=> 'User.created DESC'
+		));
+		
+		//don't display user of admin group.
+		$conditions = array('User.group !='=> 1);
+		foreach($this->params['url'] as $key=> $value){
+			if(empty($value)){
+				continue;
+			}
+			switch($key){
+				case 'username':
+					$conditions['User.username LIKE'] = '%'.$value.'%';
+					break;
+			}
+		}
+		$users = $this->paginate('User', $conditions);
+		$this->set(compact('groups', 'users'));
 	}
 
 /**

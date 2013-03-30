@@ -14,6 +14,14 @@ $(document).ready(function() {
 });
 <?php echo $this->Html->scriptEnd();?>
 
+<?php echo $this->start('breadcrumbs')?>
+<li>
+	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
+	<span class="divider">&nbsp;&gt;</span>
+</li>
+<li class="active"><?php echo __('Quản lý đơn hàng') ?></li>
+<?php echo $this->end() ?>
+
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Quản lý đơn hàng'), array('controller'=> 'orders', 'action' => 'index'))?></li>
 	<li><?php echo $this->Html->link(__('Đơn hàng chờ duyệt'), array('controller'=> 'orders', 'action' => 'index', '?'=> array('filter'=> STATUS_ORDER_ORDERING)))?></li>

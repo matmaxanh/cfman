@@ -5,18 +5,8 @@
 </li>
 <li class="active"><?php echo __('Thực đơn') ?></li>
 <?php echo $this->end() ?>
-<?php
-$params = array();
-foreach($this->params['url'] as $key=> $value){
-	if(!empty($value)){
-		$params[$key] = $value;
-	}
-}
-$this->Paginator->options(array(
-	'convertKeys'=> array_merge(array_keys($params),array('page')),
-    'url' => $params
-));
-?>
+
+<?php echo $this->element('setup_pager') ?>
 
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'menu'))?></li>
@@ -78,14 +68,7 @@ $this->Paginator->options(array(
 	</table>
 </div>
  
-<ul class="pager">
-  <li class="previous">
-    <?php echo $this->Paginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
-  </li>
-  <li class="next">
-    <?php echo $this->Paginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
-  </li>
-</ul>
+<?php echo $this->element('pager') ?>
 <script type="text/javascript">
 $('#formItem').submit(function() {
 	$('#formItem input, #formItem select').each(function(){
@@ -93,6 +76,5 @@ $('#formItem').submit(function() {
 			$(this).attr('name','');
 		}
 	});
-//    $('#formItem input[value=""]').attr('name', '');
 });
 </script>

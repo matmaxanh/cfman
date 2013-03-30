@@ -39,7 +39,7 @@ class OrdersController extends AppController {
 			}
 			$tables = array();
 			foreach($zone['Table'] as $table){
-				if($isFilter && isset($orders[$table['id']]) && ($orders[$table['id']] != $_GET['filter'])){
+				if($isFilter && (!isset($orders[$table['id']]) || ($orders[$table['id']] != $_GET['filter']))){
 					continue;
 				}
 				//check current status of each table
@@ -65,11 +65,13 @@ class OrdersController extends AppController {
 					'status'=> $status,
 				);
 			}
-			$zoneData[] = array(
-				'id'=> $zone['Zone']['id'],
-				'name'=> $zone['Zone']['name'],
-				'tables'=> $tables,
-			);
+			if(!empty($tables)){
+				$zoneData[] = array(
+					'id'=> $zone['Zone']['id'],
+					'name'=> $zone['Zone']['name'],
+					'tables'=> $tables,
+				);
+			}
 		}
 		$this->set(compact('zoneData', 'tableStatuses'));
 		if($isFilter){
