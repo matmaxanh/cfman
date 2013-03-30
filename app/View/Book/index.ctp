@@ -8,6 +8,9 @@ echo $this->Html->css(array('jquery-ui', 'jquery-ui-timepicker-addon'), 'stylesh
 </ul>
 <h4><?php echo __('Quản lý đặt chỗ') ?></h4>
 <br>
+
+<?php echo $this->element('setup_pager') ?>
+
 <div>
 	<?php echo $this->Form->create('Booking', array('type'=> 'get', 'class'=> 'form-inline', 'novalidate'=> true, 'inputDefaults'=> array('div'=> false, 'label'=> false), 'id'=> 'formBook'))?>
 			<div style="margin: 10px 0px 10px 0;">
@@ -82,14 +85,7 @@ echo $this->Html->css(array('jquery-ui', 'jquery-ui-timepicker-addon'), 'stylesh
 		</tbody>
 	</table>
 </div>
-<ul class="pager">
-  <li class="previous">
-    <?php echo $this->Paginator->prev(' << ' . __('Phía trước'), array(), null, array('class' => 'hidden')); ?>
-  </li>
-  <li class="next">
-    <?php echo $this->Paginator->next(__('Tiếp theo').' >> ', array(), null, array('class' => 'hidden')); ?>
-  </li>
-</ul>
+<?php echo $this->element('pager') ?>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#book_day_input, #book_receive_day_input").datepicker({
