@@ -2,12 +2,21 @@
 echo $this->Html->script(array('jquery-ui', 'jquery-ui-timepicker-addon', 'jquery-ui-sliderAccess'), array('inline'=> false));
 echo $this->Html->css(array('jquery-ui', 'jquery-ui-timepicker-addon'), 'stylesheet', array('inline'=> false));
 ?>
+
+<?php echo $this->start('breadcrumbs')?>
+<li>
+	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
+	<span class="divider">&nbsp;&gt;</span>
+</li>
+<li class="active"><?php echo __('Sửa thông tin đặt chỗ') ?></li>
+<?php echo $this->end() ?>
+
 <ul class="nav nav-tabs">
-	<li><?php echo $this->Html->link(__('Quản lý'), array('controller' => 'book'))?></li>
+	<li><?php echo $this->Html->link(__('Quản lý'), array('controller' => 'book', 'action'=> 'index'))?></li>
 	<li><?php echo $this->Html->link(__('Đặt chỗ'), array('controller'=> 'book', 'action' => 'add'))?></li>
 </ul>
 
-<h4><?php echo __('Chỉnh sửa thông tin đặt chỗ')?></h4>
+<h4><?php echo __('Sửa thông tin đặt chỗ')?></h4>
 <br>
 <div class="row-fluid">
 	<?php echo $this->Form->create('Booking', array('class'=> 'form-horizontal', 'inputDefaults'=> array('div'=> false, 'label'=> false)))?>
