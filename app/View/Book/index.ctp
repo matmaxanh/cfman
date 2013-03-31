@@ -2,6 +2,15 @@
 echo $this->Html->script(array('jquery-ui', 'jquery-ui-timepicker-addon', 'jquery-ui-sliderAccess'), array('inline'=> false));
 echo $this->Html->css(array('jquery-ui', 'jquery-ui-timepicker-addon'), 'stylesheet', array('inline'=> false));
 ?>
+
+<?php echo $this->start('breadcrumbs')?>
+<li>
+	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
+	<span class="divider">&nbsp;&gt;</span>
+</li>
+<li class="active"><?php echo __('Quản lý đặt chỗ') ?></li>
+<?php echo $this->end() ?>
+
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link(__('Quản lý'), array('controller' => 'book'))?></li>
 	<li><?php echo $this->Html->link(__('Đặt chỗ'), array('controller'=> 'book', 'action' => 'add'))?></li>
