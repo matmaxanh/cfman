@@ -19,6 +19,14 @@ class HtmlController extends AppController {
 		
 	}
 	
+	public function sale_staff() {
+		
+	}
+	
+	public function sale_zone() {
+		
+	}
+	
 	public function menu() {
 		
 	}
@@ -36,7 +44,9 @@ class HtmlController extends AppController {
 	}
 	
 	public function order() {
-		
+		/**
+		 * @todo: Chua responsive duoc tren man hinh iPhone 3Gs
+		 */
 	}
 	
 	public function order_wait() {
