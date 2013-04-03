@@ -28,11 +28,11 @@
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php
-// 		echo $this->Html->meta('icon');
+		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('bootstrap.min','bootstrap-responsive.min', 'custom'));
+		echo $this->Html->css(array('jquery-ui','bootstrap.min','bootstrap-responsive.min', 'custom'));
 
-		echo $this->Html->script(array('jquery-1.9.1.min', 'bootstrap.min', 'highcharts'));
+		echo $this->Html->script(array('jquery-1.9.1.min', 'jquery-ui', 'bootstrap.min', 'highcharts'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
