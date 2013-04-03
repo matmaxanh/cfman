@@ -31,7 +31,7 @@ html {
 	padding: 8px 15px;
 }
 
-table.menu-table thead tr {
+table.menu-table thead tr th {
 	background-color: #6699FF;
 }
 

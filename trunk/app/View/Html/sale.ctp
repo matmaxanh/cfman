@@ -58,8 +58,26 @@ $(document).ready(function() {
                 },
             }]
         });
+        
+        
+        $('#time-picker').datepicker( {
+	        changeMonth: true,
+	        changeYear: true,
+	        showButtonPanel: true,
+	        dateFormat: 'mm/yy',
+	        onClose: function(dateText, inst) { 
+	            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+	            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+	            $(this).datepicker('setDate', new Date(year, month, 1));
+	        }
+	    });
 });
 <?php echo $this->Html->scriptEnd();?>
+<style>
+.ui-datepicker-calendar {
+	display: none;
+}
+</style>
 
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link('Thống kê chung', array('action' => 'sale'))?></li>
@@ -70,7 +88,8 @@ $(document).ready(function() {
 <h4>Thống kê chung</h4>
 <br>
 <form class="form-inline">
-	<input class="">
+	<input class="input-small" id="time-picker" value="<?php echo date('m/Y');?>">
+	<button class="btn btn-success"><i class="icon-white icon-search"></i>Tìm kiếm</button>
 </form>
 
 <!--  Bang du lieu -->
