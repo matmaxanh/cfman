@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			<div class="span6 new-item-image">
-				<h5>Hình đại diện sản phẩm</h5>
+				<h5><?php echo __('Hình đại diện sản phẩm') ?></h5>
 				<img data-src="holder.js/300x300" class="img-polaroid center-div" style="width: 300px; height: 300px;">
 				<?php echo $this->Form->file('thumbnail') ?>
 			</div>
