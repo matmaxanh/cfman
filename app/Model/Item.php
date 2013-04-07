@@ -72,15 +72,15 @@ class Item extends AppModel {
 		'thumbnail' => array(
 			'checksize' => array(
                 'rule' => array('checkSize',false),
-                'message' => 'Invalid File size',
+                'message' => 'Kích thước file bị sai',
             ),
             'checktype' =>array(
                 'rule' => array('checkType',false),
-                'message' => 'Invalid File type',
+                'message' => 'Không đúng loại file được cho phép.',
             ),
             'checkupload' =>array(
                 'rule' => array('checkUpload', false),
-                'message' => 'Invalid file',
+                'message' => 'Lỗi khi tải file',
             ),
 		)
 	);

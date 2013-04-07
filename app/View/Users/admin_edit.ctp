@@ -1,26 +1,56 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit User'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('group');
-		echo $this->Form->input('delete_flag');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<ul class="nav nav-tabs">
+	<li><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'users', 'action' => 'index'))?></li>
+	<li class="active"><?php echo $this->Html->link(__('Thêm mới'), array('controller'=> 'users', 'action'=> 'add'))?></li>
+</ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Orders'), array('controller' => 'orders', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Order'), array('controller' => 'orders', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Working Schedules'), array('controller' => 'working_schedules', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Working Schedule'), array('controller' => 'working_schedules', 'action' => 'add')); ?> </li>
-	</ul>
+<div>
+	<h4><?php echo __('Sửa thông tin tài khoản') ?></h4>
+	<br>
+	<?php echo $this->Form->create('User', array('class'=> 'form-horizontal', 'inputDefaults'=> array('label'=> false, 'div'=> false), 'novalidate'=> true))?>
+	<?php echo $this->Form->hidden('id') ?>
+		<div class="row-fluid">
+			<div class="span6 new-item-info">
+				<div class="control-group">
+					<label class="control-label"><?php echo __('Nhóm') ?></label>
+					<div class="controls">
+						<?php echo $this->Form->select('group', Configure::read('user_group'))?>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="ten"><?php echo __('Tên đăng nhập') ?></label>
+					<div class="controls">
+						<?php echo $this->Form->input('username', array('placeholder'=> __('Tên đăng nhập')))?>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="pass"><?php echo __('Mật khẩu') ?></label>
+					<div class="controls">
+						<?php echo $this->Form->input('passwd', array('type' => 'password', 'placeholder'=> __('Mật khẩu'))) ?>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="pass"><?php echo __('Nhập lại mật khẩu') ?></label>
+					<div class="controls">
+						<?php echo $this->Form->input('passwd_confirm', array('type' => 'password', 'placeholder'=> __('Nhập lại mật khẩu'))) ?>
+					</div>
+				</div>
+			</div>
+			<div class="span6 new-item-image">
+				<h5><?php echo __('Hình đại diện') ?></h5>
+				<img data-src="holder.js/150x150" class="img-polaroid center-div" style="width: 150px; height: 150px;">
+				<?php echo $this->Form->file('avatar') ?>
+			</div>
+		</div>
+		<hr>
+		<div class="control-group">
+			<div class="controls">
+				<div class="controls">
+					<?php echo $this->Form->button(__('Cập nhật'), array('class'=> 'btn btn-success'))?>
+					<?php echo $this->Html->link('Reset', array('controller'=> 'users', 'action'=> 'edit', $this->data['User']['id']), array('class'=> 'btn'))?>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
 </div>
