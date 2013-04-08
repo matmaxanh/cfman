@@ -132,7 +132,7 @@ class UsersController extends AppController {
 			$this->User->create();
 			$this->request->data['User']['is_deleted'] = STATUS_DISABLE;
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash(__('The user has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
@@ -152,11 +152,14 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+			if(empty($this->request->data['User']['passwd'])){
+				unset($this->request->data['User']['passwd']);
+			}
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash(__('The user has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));

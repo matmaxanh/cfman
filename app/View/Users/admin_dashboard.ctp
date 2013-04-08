@@ -46,7 +46,7 @@
 			<div class="span4">
 				<?php 
 					echo $this->Html->link('<i class="icon-resize-full icon-white"></i>&nbsp;'.__('Quản lý khác'),
-						'/admin/other',
+						array('controller'=> 'suppliers', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
 				?>
