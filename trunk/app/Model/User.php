@@ -26,32 +26,31 @@ class User extends AppModel {
 		'username'=> array(
 			'username_must_not_be_empty'=> array(
 				'rule' => 'notEmpty',
+				'last' => true,
 			),
 			'username_must_be_unique' => array(
                 'rule' => 'isUnique',
+				'last' => true,
 			),
 		),
 		'passwd' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'on' => 'create'
-			),
-			'allowempty'=> array(
-				
+				'on' => 'create',
 			),
 			'min' => array(
 		        'rule' => array('minLength', 6),
-				'message'=> 'Mật khẩu phải dài hơn 6 ký tự'
-		     ),
-		     'match'=>array(
+				'message' => 'Mật khẩu phải dài hơn 6 ký tự',
+		    ),
+		    'match' => array(
 		        'rule' => 'validatePasswdConfirm',
-		     	'message'=> 'Mật khẩu nhập không trùng nhau'
+		     	'message' => 'Mật khẩu nhập không trùng nhau',
         	)
 		),
    		'passwd_confirm' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'on' => 'create'
+				'on' => 'create',
 			),
     	),
 		'avatar' => array(
