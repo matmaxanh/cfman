@@ -89,7 +89,7 @@ class UsersController extends AppController {
 		));
 		
 		//don't display user of admin group.
-		$conditions = array('User.group !='=> 1, 'User.is_deleted'=> STATUS_DISABLE);
+		$conditions = array('User.group !='=> 1, 'User.delete_flag'=> STATUS_DISABLE);
 		foreach($this->params['url'] as $key=> $value){
 			if(empty($value)){
 				continue;
@@ -130,7 +130,7 @@ class UsersController extends AppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			$this->request->data['User']['is_deleted'] = STATUS_DISABLE;
+			$this->request->data['User']['delete_flag'] = STATUS_DISABLE;
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
@@ -181,7 +181,7 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->User->saveField('is_deleted', STATUS_ACTIVE)) {
+		if ($this->User->saveField('delete_flag', STATUS_ACTIVE)) {
 			$this->Session->setFlash(__('User deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
