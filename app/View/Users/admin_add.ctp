@@ -49,7 +49,5 @@
 				</div>
 			</div>
 		</div>
-	</form>
-
-
+	<?php echo $this->Form->end() ?>
 </div>

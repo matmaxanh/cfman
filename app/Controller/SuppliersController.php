@@ -41,10 +41,10 @@ class SuppliersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Supplier->create();
 			if ($this->Supplier->save($this->request->data)) {
-				$this->Session->setFlash(__('The supplier has been saved'));
+				$this->Session->setFlash(__('The supplier has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The supplier could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The supplier could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		}
 	}
@@ -62,10 +62,10 @@ class SuppliersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Supplier->save($this->request->data)) {
-				$this->Session->setFlash(__('The supplier has been saved'));
+				$this->Session->setFlash(__('The supplier has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The supplier could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The supplier could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		} else {
 			$options = array('conditions' => array('Supplier.' . $this->Supplier->primaryKey => $id));
@@ -88,10 +88,10 @@ class SuppliersController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Supplier->delete()) {
-			$this->Session->setFlash(__('Supplier deleted'));
+			$this->Session->setFlash(__('Supplier deleted'), 'default', array('class'=> 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Supplier was not deleted'));
+		$this->Session->setFlash(__('Supplier was not deleted'), 'default', array('class'=> 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

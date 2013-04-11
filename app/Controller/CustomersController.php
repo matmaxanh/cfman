@@ -41,10 +41,10 @@ class CustomersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Customer->create();
 			if ($this->Customer->save($this->request->data)) {
-				$this->Session->setFlash(__('The customer has been saved'));
+				$this->Session->setFlash(__('The customer has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The customer could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The customer could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		}
 	}
@@ -62,10 +62,10 @@ class CustomersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Customer->save($this->request->data)) {
-				$this->Session->setFlash(__('The customer has been saved'));
+				$this->Session->setFlash(__('The customer has been saved'), 'default', array('class'=> 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The customer could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The customer could not be saved. Please, try again.'), 'default', array('class'=> 'alert alert-error'));
 			}
 		} else {
 			$options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $id));
@@ -88,10 +88,10 @@ class CustomersController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Customer->delete()) {
-			$this->Session->setFlash(__('Customer deleted'));
+			$this->Session->setFlash(__('Customer deleted'), 'default', array('class'=> 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Customer was not deleted'));
+		$this->Session->setFlash(__('Customer was not deleted'), 'default', array('class'=> 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
 }
