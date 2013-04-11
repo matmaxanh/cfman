@@ -1,22 +1,49 @@
-<div class="customers form">
-<?php echo $this->Form->create('Customer'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit Customer'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('favourite_item');
-		echo $this->Form->input('phone');
-		echo $this->Form->input('memo');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<ul class="nav nav-tabs">
+	<li><?php echo $this->Html->link(__('Danh sách khách hàng'), array('controller'=> 'customers', 'action' => 'index'))?></li>
+</ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Customer.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Customer.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Customers'), array('action' => 'index')); ?></li>
-	</ul>
+<div>
+	<h4><?php echo __('Sửa thông tin khách hàng') ?></h4>
+	<br>
+	<?php echo $this->Form->create('Customer', array('class'=> 'form-horizontal', 'inputDefaults'=> array('label'=> false, 'div'=> false)))?>
+	<?php echo $this->Form->hidden('id') ?>
+	<div class="row-fluid">
+		<div class="control-group">
+			<label class="control-label"><?php echo __('Tên khách hàng') ?></label>
+			<div class="controls">
+				<?php echo $this->Form->input('name', array('placeholder'=> __('Tên khách hàng')))?>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label"><?php echo __('Sản phẩm ưa thích') ?></label>
+			<div class="controls">
+				<?php echo $this->Form->input('favourite_item', array('placeholder'=> __('Sản phẩm ưa thích')))?>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="lienlac">SDT Liên lạc</label>
+			<div class="controls">
+				<?php echo $this->Form->input('phone', array('placeholder'=> __('SDT Liên lạc')))?>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label"><?php echo __('Ghi chú') ?></label>
+			<div class="controls">
+				<?php echo $this->Form->textarea('memo', array('placeholder'=> __('Ghi chú thêm'), 'rows' => 2, 'cols'=> 2))?>
+			</div>
+		</div>
+		<hr>
+		<div class="control-group">
+			<div class="controls">
+				<div class="controls">
+				<?php echo $this->Form->button(__('Cập nhật'), array('class'=>  'btn btn-success')) ?>
+				<?php echo $this->Html->link(__('Làm lại'), array('controller'=> 'customers', 'action'=> 'add'), array('class'=> 'btn')) ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php echo $this->Form->end() ?>
 </div>
