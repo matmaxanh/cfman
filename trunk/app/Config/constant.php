@@ -6,6 +6,7 @@ define('USER_IMAGE_PATH', WWW_ROOT.'img'.DS.'user');
 /*================ Role ===============*/
 define('GROUP_ADMINISTRATOR', 1);
 define('GROUP_STAFF', 2);
+define('GROUP_WAITER', 3);
 
 /*================ Status =============*/
 define('STATUS_ACTIVE', 1);
@@ -22,8 +23,8 @@ define('STATUS_ORDER_ITEM_RECEIVED', 2);
 define('STATUS_ORDER_ITEM_CANCELED', 3);
 
 Configure::write('user_group', array(
-	2 => 'Quản lý',
-	3 => 'Nhân viên phục vụ',
+	GROUP_STAFF => 'Quản lý',
+	GROUP_WAITER => 'Nhân viên phục vụ',
 ))
 
 

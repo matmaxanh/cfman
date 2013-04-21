@@ -187,5 +187,17 @@ class User extends AppModel {
 		}
 	    return true;
 	}
+	
+	public function checkWaiter($username, $password){
+		$user = $this->find('first', array(
+			'recursive' => -1,
+			'conditions' => array(
+				'User.username' => $username,
+				'User.password' => $password,
+				'User.group' => GROUP_WAITER,
+			),
+		));
+		return $user;
+	}
 
 }

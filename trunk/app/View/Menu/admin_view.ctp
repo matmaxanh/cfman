@@ -43,7 +43,7 @@
 		</dd>
 		<dt><?php echo __('Delete Flg'); ?></dt>
 		<dd>
-			<?php echo h($item['Item']['delete_flg']); ?>
+			<?php echo h($item['Item']['delete_flag']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -91,7 +91,7 @@
 			<td><?php echo $warehouse['id']; ?></td>
 			<td><?php echo $warehouse['item_id']; ?></td>
 			<td><?php echo $warehouse['amount']; ?></td>
-			<td><?php echo $warehouse['delete_flg']; ?></td>
+			<td><?php echo $warehouse['delete_flag']; ?></td>
 			<td><?php echo $warehouse['created']; ?></td>
 			<td><?php echo $warehouse['updated']; ?></td>
 			<td class="actions">

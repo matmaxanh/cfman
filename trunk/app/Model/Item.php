@@ -14,6 +14,8 @@ class Item extends AppModel {
  * @var string
  */
 	public $displayField = 'name1';
+	
+	public $actsAs = array('Containable');
 
 /**
  * Validation rules

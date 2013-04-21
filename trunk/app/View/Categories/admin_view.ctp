@@ -69,7 +69,7 @@
 			<td><?php echo $item['name3']; ?></td>
 			<td><?php echo $item['image']; ?></td>
 			<td><?php echo $item['cost']; ?></td>
-			<td><?php echo $item['delete_flg']; ?></td>
+			<td><?php echo $item['delete_flag']; ?></td>
 			<td><?php echo $item['created']; ?></td>
 			<td><?php echo $item['updated']; ?></td>
 			<td class="actions">
