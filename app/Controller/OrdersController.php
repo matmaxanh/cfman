@@ -105,26 +105,6 @@ class OrdersController extends AppController {
 	}
 
 /**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Order->create();
-			if ($this->Order->save($this->request->data)) {
-				$this->Session->setFlash(__('The order has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The order could not be saved. Please, try again.'));
-			}
-		}
-		$tables = $this->Order->Table->find('list');
-		$users = $this->Order->User->find('list');
-		$this->set(compact('tables', 'users'));
-	}
-
-/**
  * edit method
  *
  * @throws NotFoundException
@@ -265,5 +245,9 @@ class OrdersController extends AppController {
 		}
 		$this->Session->setFlash(__('Order was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	public function admin_payment(){
+				
 	}
 }
