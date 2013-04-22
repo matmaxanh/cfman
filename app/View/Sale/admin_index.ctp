@@ -9,14 +9,7 @@ $(document).ready(function() {
                 text: ''
             },
             xAxis: {
-                categories: [
-                    '12/03/2013',
-                    '12/03/2013',
-                    '12/03/2013',
-                    '12/03/2013',
-                    '12/03/2013',
-                    '12/03/2013',
-                ],
+                categories: [<?php echo implode(",", $dates) ?>],
                 labels: {
                     rotation: -45,
                     align: 'right',
@@ -38,17 +31,17 @@ $(document).ready(function() {
             tooltip: {
                 formatter: function() {
                     return '<b>'+ this.x +'</b><br/>'+
-                        'Doanh thu la '+ Highcharts.numberFormat(this.y, 1) + 'millions';
+                        'Doanh thu la '+ Highcharts.numberFormat(this.y, 0) + ' đồng';
                 }
             },
             series: [{
                 name: 'Population',
-                data: [34.4, 21.8, 20.1, 20, 34.6, 19.5],
+                data: [<?php echo implode(",", array_values($data)) ?>],
                 dataLabels: {
                     enabled: true,
                     rotation: 0,
                     color: '#000',
-                    align: 'right',
+                    align: 'center',
                     x: 0,
                     y: 0,
                     style: {
@@ -64,7 +57,7 @@ $(document).ready(function() {
 	        changeMonth: true,
 	        changeYear: true,
 	        showButtonPanel: true,
-	        dateFormat: 'mm/yy',
+	        dateFormat: 'yy-mm',
 	        onClose: function(dateText, inst) { 
 	            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 	            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
@@ -81,35 +74,41 @@ $(document).ready(function() {
 
 <ul class="nav nav-tabs">
 	<li class="active"><?php echo $this->Html->link('Thống kê chung', array('action' => 'sale'))?></li>
-	<li><?php echo $this->Html->link('Theo khu vực', array('action' => 'sale_zone'))?></li>
-	<li><?php echo $this->Html->link('Theo nhân viên', array('action' => 'sale_staff'))?></li>
+	<li><?php echo $this->Html->link('Theo khu vực', array('action' => 'zone'))?></li>
+	<li><?php echo $this->Html->link('Theo nhân viên', array('action' => 'staff'))?></li>
 </ul>
 
 <h4><?php echo __('Thống kê chung') ?></h4>
 <br>
-<form class="form-inline">
-	<input class="input-small" id="time-picker" value="<?php echo date('m/Y');?>">
-	<button class="btn btn-success"><i class="icon-white icon-search"></i>Tìm kiếm</button>
-</form>
+<?php echo $this->Form->create('Sale', array(
+	'inputDefaults' => array('div'=> false, 'label'=> false),
+	'url' => array('controller' => 'sale', 'action' => 'index'),
+));
+echo $this->Form->input('month', array('class' => 'input-small', 'id' => 'time-picker', 'value' => $month));
+echo $this->Form->button('<i class="icon-white icon-search"></i>Tìm kiếm', array('class'=> 'btn btn-success', 'escape' => false));
+echo $this->Form->end();
+?>
+
+<!-- Chart hien thi -->
+<div id="chart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
 <!--  Bang du lieu -->
 <table class="table table-bordered table-striped menu-table">
 	<thead>
 		<tr>
-			<th>Thời gian</th>
-			<th>Doanh Thu</th>
+			<th><?php echo __('Thời gian') ?></th>
+			<th><?php echo __('Doanh thu') ?></th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php for($i=1; $i<=6; ++$i):?>
+		<?php foreach($data as $day => $value): ?>
 			<tr>
-				<td>12/12/2013</td>
-				<td>32342</td>
+				<td><?php echo date('d/m/Y', strtotime($day.' 00:00:00')); ?></td>
+				<td><?php echo $value; ?></td>
 			</tr>
-		<?php endfor?>
+		<?php endforeach; ?>
 	</tbody>
 </table>
 
 
-<!-- Chart hien thi -->
-<div id="chart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+

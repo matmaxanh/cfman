@@ -62,5 +62,28 @@ class Order extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	/*
+	 * calculate cash total 
+	 * @param int orderId
+	 */
+	public function payment($orderId){
+		$order = $this->find('first', array(
+			'conditions' => array('Order.id' => $orderId),
+		));
+		if(!empty($order)){
+			$totalCash = 0;
+			foreach($order['OrderItem'] as $orderItem){
+				if($orderItem['status'] == STATUS_ORDER_ITEM_RECEIVED){
+					$totalCash += $orderItem['amount'] * $orderItem['item_cost'];
+				}
+			}
+			$this->id = $orderId;
+			if($this->saveField('total_cash', $totalCash)){
+				return $totalCash;
+			}
+		}
+		return false;
+	}
 
 }
