@@ -53,6 +53,8 @@ class MobileController extends AppController {
 				} else {
 					$result['message'] = __('The order could not be saved. Please, try again.');
 				}
+			}else{
+				$result['message'] = __('Invalid user');
 			}
 		}
 		echo json_encode($result);
@@ -146,6 +148,8 @@ class MobileController extends AppController {
 						'cost' => $item['Item']['cost'],
 					); 
 				}
+			}else{
+				$result['message'] = __('Invalid user');
 			}
 		}
 		echo json_encode($result);
