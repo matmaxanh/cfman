@@ -57,7 +57,7 @@ $(document).ready(function() {
 	        changeMonth: true,
 	        changeYear: true,
 	        showButtonPanel: true,
-	        dateFormat: 'yy-mm',
+	        dateFormat: 'mm/yy',
 	        onClose: function(dateText, inst) { 
 	            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 	            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
@@ -84,8 +84,8 @@ $(document).ready(function() {
 	'inputDefaults' => array('div'=> false, 'label'=> false),
 	'url' => array('controller' => 'sale', 'action' => 'index'),
 ));
-echo $this->Form->input('month', array('class' => 'input-small', 'id' => 'time-picker', 'value' => $month));
-echo $this->Form->button('<i class="icon-white icon-search"></i>Tìm kiếm', array('class'=> 'btn btn-success', 'escape' => false));
+echo $this->Form->input('month', array('class' => 'input-small', 'id' => 'time-picker', 'value' => $month, 'style' => 'float:left'));
+echo $this->Form->button('<i class="icon-white icon-search"></i>Tìm kiếm', array('escape' => false, 'class'=> 'btn btn-success', 'style' => 'margin-left:5px'));
 echo $this->Form->end();
 ?>
 
