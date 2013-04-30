@@ -10,7 +10,8 @@ class SaleController extends AppController {
 	
 	function admin_index(){
 		if($this->request->is('post') && isset($this->request->data['Sale']['month'])){
-			$month = $this->request->data['Sale']['month'];
+			$date = date_create_from_format('m/Y', $this->request->data['Sale']['month']);
+			$month = $date->format('Y-m');
 		}else{
 			$month = date('Y-m');
 		}
@@ -20,6 +21,7 @@ class SaleController extends AppController {
 			'recursive' => -1,
 			'conditions' => $conditions,
 		));
+		$month = date('m/Y', strtotime($month.'-01 00:00:00'));
 		
 		$data = $dates = array();
 		foreach($sales as $row){
