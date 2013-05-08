@@ -7,7 +7,7 @@
 <?php echo $this->end() ?>
 
 <ul class="nav nav-tabs">
-	<li><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'menu'))?></li>
+	<li><?php echo $this->Html->link(__('Danh sách'), array('controller'=> 'menu', 'action' => 'index'))?></li>
 	<li class="active"><?php echo $this->Html->link(__('Thêm mới'), array('controller'=> 'menu', 'action'=> 'add'))?></li>
 </ul>
 <div>

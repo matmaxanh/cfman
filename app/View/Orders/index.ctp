@@ -32,6 +32,7 @@ $(document).ready(function() {
 <br>
 <div>
 	<div class="accordion" id="accordion2">
+		<!-- 
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#col1"><?php echo __('Trạng thái chung') ?></a>
@@ -48,12 +49,12 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-		
+		 -->
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#col2">Trạng thái chi tiết</a>
 			</div>
-			<div id="col2" class="accordion-body collapse">
+			<div id="col2" class="accordion-body collapse in">
 				<div class="accordion-inner">
 					<?php foreach($zoneData as $zone): ?>
 					<fieldset>
