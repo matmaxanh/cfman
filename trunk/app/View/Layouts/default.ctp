@@ -60,15 +60,33 @@
 							<li><a href="#">Chức năng</a> <span class="divider">/</span></li>
 							<li class="active">Data</li>
 						<?php else:?>
-							<?php echo $this->fetch('breadcrumbs') ?>
+							<?php echo $this->fetch('breadcrumbs')?>
 						<?php endif;?>
 					</ul>
 				</div>
 				<div class="span6">
 					<div class="sys-info pull-right">
-						<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
-						&nbsp;
-						<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
+						<div>
+							<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
+							&nbsp;
+							<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
+						</div>
+						<div>
+							<div class="to-info">
+								<div class="table-object to-small to-empty">
+									<p class="to-name-small center">55</p>
+								</div>
+								<div class="table-object to-small to-ordering">
+									<p class="to-name-small center">3</p>
+								</div>
+								<div class="table-object to-small to-waiting">
+									<p class="to-name-small center">4</p>
+								</div>
+								<div class="table-object to-small to-served">
+									<p class="to-name-small center">1</p>
+								</div>
+							</div>	
+						</div>
 					</div>
 				</div>
 			</div>
