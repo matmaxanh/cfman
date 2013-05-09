@@ -11,7 +11,7 @@
 			</div>
 			<div class="span4">
 				<?php 
-					echo $this->Html->link('<i class="icon-shopping-cart icon-white"></i>&nbsp;'.__('Đơn đặt hàng'), 
+					echo $this->Html->link('<i class="icon-shopping-cart icon-white"></i>&nbsp;'.__('Bán hàng'), 
 						array('controller'=> 'orders', 'action'=> 'index'),
 						array('class' => 'btn btn-success btn-large menu-btn', 'escape' => false)
 					);
