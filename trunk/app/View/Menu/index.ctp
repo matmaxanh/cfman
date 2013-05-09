@@ -1,3 +1,4 @@
+<?php App::uses('CakeNumber', 'Utility')?>
 <?php echo $this->start('breadcrumbs')?>
 <li>
 	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
