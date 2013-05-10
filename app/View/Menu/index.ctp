@@ -1,4 +1,3 @@
-<?php App::uses('CakeNumber', 'Utility')?>
 <?php echo $this->start('breadcrumbs')?>
 <li>
 	<?php echo $this->Html->link(__('Trang chủ'), array('controller'=> 'users', 'action'=> 'dashboard'), array('escape'=> false))?>
@@ -62,7 +61,7 @@
 				<td><?php echo $this->Html->link(h($item['Item']['name1']), array('controller'=> 'menu', 'action'=> 'edit', $item['Item']['id']), array('escape'=> false))?></td>
 				<td><?php echo h($item['Item']['name2'])?></td>
 				<td><?php echo h($item['Item']['name3'])?></td>
-				<td><?php echo CakeNumber::currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
+				<td><?php echo $this->Number->currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
