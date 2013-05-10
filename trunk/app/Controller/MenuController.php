@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
 class MenuController extends AppController {
 	
 	public $uses = array('Item');
+	
+	public $helpers = array('Number');
 
 /**
  * index method

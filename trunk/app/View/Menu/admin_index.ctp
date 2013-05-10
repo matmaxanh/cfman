@@ -63,7 +63,7 @@
 				<td><?php echo $this->Html->link(h($item['Item']['name1']), array('controller'=> 'menu', 'action'=> 'edit', $item['Item']['id']), array('escape'=> false))?></td>
 				<td><?php echo h($item['Item']['name2'])?></td>
 				<td><?php echo h($item['Item']['name3'])?></td>
-				<td><?php echo CakeNumber::currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
+				<td><?php echo $this->Number->currency($item['Item']['cost'], ' VND', array('wholePosition' => 'after', 'places' => 0, 'thousands' => '.', 'decimals' => ','))?></td>
 				<td>
 					<?php echo $this->Html->link('<i class="icon-edit"></i>&nbsp;'.__('Sửa'), array('controller'=> 'menu', 'action'=> 'edit', $item['Item']['id']), array('escape'=> false, 'class'=> 'pull-left'))?>
 					<?php echo $this->Form->postLink('<i class="icon-edit"></i>&nbsp;'.__('Xóa'), array('controller'=> 'menu', 'action'=> 'delete', $item['Item']['id']), array('escape'=> false, 'class'=> 'pull-right'))?>
