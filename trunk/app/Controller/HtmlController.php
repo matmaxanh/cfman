@@ -76,4 +76,8 @@ class HtmlController extends AppController {
 	public function user_add() {
 		
 	}
+	
+	public function display_404() {
+		
+	}
 }

@@ -181,3 +181,15 @@ ul.to-explain li {
 div.to-info {
 	margin-top: 5px;
 }
+
+div.error-404 {
+	margin: 10px 0;
+}
+
+div.message-404 {
+	padding: 20px 0;
+}
+
+div.error-404 p {
+	padding: 10px 0;
+}
