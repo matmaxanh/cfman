@@ -16,21 +16,15 @@ body {
   background-size: cover;
 }
 @media (min-width: 979px) {
-  /* line 13, ../sass/typica-login.scss */
   body {
     padding-top: 80px;
   }
 }
 
-/* line 21, ../sass/typica-login.scss */
 .blue {
   color: #447fc8;
 }
 
-/* ####### */
-/* $LOGIN  */
-/* ####### */
-/* line 80, ../sass/typica-login.scss */
 #login-wraper {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -40,47 +34,41 @@ body {
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 50%;
-  left: 50%;
+/*   position: absolute; */
+/*   top: 50%; */
+/*   left: 50%; */
   display: block;
-  margin-top: -185px;
-  margin-left: -235px;
+/*   margin-top: -185px; */
+/*   margin-left: -235px; */
   padding: 15px;
-  width: 420px;
+  width: 320px;
   height: 320px;
   background: white;
   text-align: center;
-  
-  
   border: 1px solid #f0f0f0;
+  margin: 0 auto;
+  float: none;
+  
 }
 
-/* line 97, ../sass/typica-login.scss */
-/* .login-form legend { */
-/*   margin-top: 5px; */
-/*   margin-bottom: 30px; */
-/*   padding-bottom: 25px; */
-/* } */
-/* line 102, ../sass/typica-login.scss */
 .login-form .body {
   padding-bottom: 20px;
   border-bottom: 1px solid #eeeeee;
 }
-/* line 106, ../sass/typica-login.scss */
+
 .login-form .footer {
   margin-top: 10px;
 }
-/* line 108, ../sass/typica-login.scss */
+
 .login-form .footer .checkbox.inline {
   display: inline;
 }
-/* line 110, ../sass/typica-login.scss */
+
 .login-form .footer .checkbox.inline input[type="checkbox"] {
   float: none;
   margin-top: -4px;
 }
-/* line 115, ../sass/typica-login.scss */
+
 .login-form .footer .btn {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -100,5 +88,8 @@ div.label-login {
 		
 }
 
-
+#content {
+/* 	position: relative; */
+/* 	margin-top: 10%; */
+/* 	top: 50%; */
 }
