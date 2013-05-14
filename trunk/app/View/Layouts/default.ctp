@@ -40,11 +40,53 @@
 	?>
 </head>
 <body>
-	<div id="container">
+	<?php $logoUrl = ($this->name == 'Html') ? array('controller' => 'Html', 'action' => 'index') : '/';?>
+	<div class="top-menu navbar navbar-fixed-top">
+  		<div class="navbar-inner">
+  			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				 
+				<?php echo $this->Html->link(__('CafeMan'), $logoUrl, array('class' => 'brand'))?>
+						 
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+				      <li class="active"><a href="#">Home</a></li>
+				      <li><a href="#">Link</a></li>
+				      <li><a href="#">Link</a></li>
+				    </ul>
+				    <div class="pull-right">
+				   		<div class="sys-info pull-right" style="margin-top: 3px;">
+							<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
+								&nbsp;
+							<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
+						</div>
+						<div class="to-info pull-right">
+							<div class="table-object to-small to-empty">
+								<p class="to-name-small center">55</p>
+							</div>
+							<div class="table-object to-small to-ordering">
+								<p class="to-name-small center">3</p>
+							</div>
+							<div class="table-object to-small to-waiting">
+								<p class="to-name-small center">4</p>
+							</div>
+							<div class="table-object to-small to-served">
+								<p class="to-name-small center">1</p>
+							</div>
+						</div>
+					</div>
+				</div>
+  			</div>
+		</div>
+	</div>
+	<div class="container">
 		<div id="header">
-			<div style="text-align: center">
+			<div>
 				<?php
-					$logoUrl = ($this->name == 'Html') ? array('controller' => 'Html', 'action' => 'index') : '/'; 
 					echo $this->Html->link(
 						$this->Html->image('sam-logo-inside.jpg', array('id' => 'brand-logo')),
 						$logoUrl,
@@ -53,7 +95,7 @@
 				?>
 			</div>
 			<div class="header-info row-fluid">
-				<div class="span6">
+				<div class="container">
 					<ul class="breadcrumb">
 						<?php if ($this->name == 'Html'):?>
 							<li><a href="">Trang chủ</a> <span class="divider">/</span></li>
@@ -63,31 +105,6 @@
 							<?php echo $this->fetch('breadcrumbs')?>
 						<?php endif;?>
 					</ul>
-				</div>
-				<div class="span6">
-					<div class="sys-info pull-right">
-						<div>
-							<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
-							&nbsp;
-							<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
-						</div>
-						<div>
-							<div class="to-info">
-								<div class="table-object to-small to-empty">
-									<p class="to-name-small center">55</p>
-								</div>
-								<div class="table-object to-small to-ordering">
-									<p class="to-name-small center">3</p>
-								</div>
-								<div class="table-object to-small to-waiting">
-									<p class="to-name-small center">4</p>
-								</div>
-								<div class="table-object to-small to-served">
-									<p class="to-name-small center">1</p>
-								</div>
-							</div>	
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
