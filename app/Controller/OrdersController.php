@@ -152,6 +152,7 @@ class OrdersController extends AppController {
 		$this->Session->setFlash(__('Order was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
 
 /**
  * admin_index method
@@ -247,7 +248,4 @@ class OrdersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
-	public function admin_payment(){
-				
-	}
 }
