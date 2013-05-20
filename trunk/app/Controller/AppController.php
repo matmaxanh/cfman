@@ -77,11 +77,10 @@ class AppController extends Controller {
 	
 	public function isAuthorized($user = null) {
 		// Only admins can access admin functions
-		if (isset($this->request->params['admin'])) {
-			if(intval($user['group']) !== GROUP_ADMINISTRATOR){
-				$this->Session->destroy();
-				return false;
-			}
+		// Only users can access user functions
+		if ((!isset($this->request->params['admin']) && (intval($user['group']) == GROUP_ADMINISTRATOR)) || (isset($this->request->params['admin']) && (intval($user['group']) !== GROUP_ADMINISTRATOR))){
+			$this->Session->destroy();
+			return false;
 		}
 		return true;
 	}
