@@ -11,8 +11,9 @@ $links = array(
 if(!isset($this->request->params['admin'])){
 	$menuLinks = array($links['home'], $links['order'], $links['book'], $links['store'], $links['menu']);
 }else{
-	$menuLinks = array($links['home'], $links['sale'], $links['order'], $links['book'], $links['store'], $links['menu'], $links['member']);
-}?>
+	$menuLinks = array($links['sale'], $links['order'], $links['book'], $links['store'], $links['menu'], $links['member']);
+}
+?>
 <div class="nav-collapse collapse">
 	<ul class="nav">
 		<?php foreach($menuLinks as $link){
@@ -20,11 +21,22 @@ if(!isset($this->request->params['admin'])){
 		}?>
 	</ul>
 	<div class="pull-right">
-   		<div class="sys-info pull-right" style="margin-top: 3px;">
-			<?php echo __('Xin chào')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong>!
-				&nbsp;
-			<?php echo $this->Html->link(__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'))?>
+   		<div class="sys-info pull-right">
+			<ul class="nav full pull-right">
+				<li class="dropdown user-avatar">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
+						<span><?php echo __('Hi, ')?> <strong><?php echo $this->Session->read('Auth.User.username')?></strong> <i class="icon-caret-down" style="background-color: #aaa;"></i></span> 
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="icon-user"></i> <span><?php echo __('Cá nhân')?></span> </a>	</li>
+						<li class="divider" style="margin: 5px 1px"></li>
+						<li><?php echo $this->Html->link("<i class='icon-off'></i> ".__('Đăng xuất'), array('controller' => 'users', 'action' => 'logout'), array('escape' => false))?></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
+		
 		<div class="to-info pull-right">
 			<div class="table-object to-small to-empty">
 				<p class="to-name-small center">55</p>

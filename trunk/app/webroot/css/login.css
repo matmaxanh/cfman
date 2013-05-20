@@ -41,7 +41,7 @@ body {
 /*   margin-top: -185px; */
 /*   margin-left: -235px; */
   padding: 15px;
-  width: 320px;
+  max-width: 320px;
   height: 320px;
   background: white;
   text-align: center;
