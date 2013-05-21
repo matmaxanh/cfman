@@ -1,5 +1,5 @@
 <div id="login-wraper">
-	<?php echo $this->Form->create('User', array('url'=> array('controller'=> 'users', 'action'=> 'login')))?>
+	<?php echo $this->Form->create('User', array('url'=> array('controller'=> 'users', 'action'=> 'login'), 'class' => 'center'))?>
 		<div>
 			<?php echo $this->Html->image('sam-logo.jpg', array('style' => 'width: 200px; height:75px'))?>
 		</div>
@@ -23,4 +23,7 @@
 			<button type="submit" class="btn btn-success login-btn">Login</button>
 		</div>
 	<?php echo $this->Form->end() ?>
+	<ul>
+		<li><?php echo $this->Html->link(__('Đăng nhập nhân viên'), array('action' => 'login', 'admin' => false))?></li>
+	</ul>
 </div>
