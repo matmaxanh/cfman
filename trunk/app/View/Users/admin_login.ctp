@@ -1,10 +1,10 @@
-<div id="login-wraper">
+<div id="login-wrapper">
 	<?php echo $this->Form->create('User', array('url'=> array('controller'=> 'users', 'action'=> 'login'), 'class' => 'center'))?>
 		<div>
 			<?php echo $this->Html->image('sam-logo.jpg', array('style' => 'width: 200px; height:75px'))?>
 		</div>
 		<hr>
-
+		<?php echo $this->Session->flash('auth') ?>
 		<div class="body">
 			<div>
 				<label for="username"><?php echo __('Tài khoản(admin)')?></label> 

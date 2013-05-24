@@ -17,7 +17,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			} else {
-				$this->Session->setFlash($this->Auth->authError, 'default', array('alert alert-error'), 'auth');
+				$this->Session->setFlash(__('Invalid username or password.'), 'default', array('class' => 'alert alert-error'), 'auth');
 				$this->redirect($this->Auth->loginAction);
 			}
 		}
@@ -52,7 +52,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			} else {
-				$this->Session->setFlash($this->Auth->authError, 'default', array('alert alert-error'), 'auth');
+				$this->Session->setFlash(__('Invalid username or password.'), 'default', array('class' => 'alert alert-error'), 'auth');
 				$this->redirect($this->Auth->loginAction);
 			}
 		}

@@ -1,6 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
-App::uses('Order', 'Model');
+App::uses('Invoice', 'Model');
 /**
  * Sale Model
  *
@@ -10,12 +10,12 @@ class Sale extends AppModel {
 	 * @param date $day format Y-m-d
 	 */
 	public function calculateIncomeByDay($day){
-		$this->Order = new Order();
-		$data = $this->Order->find('all', array(
+		$this->Invoice = new Order();
+		$data = $this->Invoice->find('all', array(
 			'recursive' => -1,
-			'conditions' => array('DATE(Order.created)' => $day),
-			'fields' => array('SUM(Order.total_cash) as income_total'),
-			'group' => array('DATE(Order.created)')
+			'conditions' => array('DATE(Invoice.created)' => $day),
+			'fields' => array('SUM(Invoice.total_cost) as income_total'),
+			'group' => array('DATE(Invoice.created)')
 		));
 		if(!empty($data)){
 			$this->create();

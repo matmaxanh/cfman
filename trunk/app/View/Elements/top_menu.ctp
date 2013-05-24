@@ -1,11 +1,11 @@
 <?php
 $links = array(
 	'home' => array('title' => __('Trang chủ'), 'url' => array('controller' => 'users', 'action' => 'dashboard')),
-	'sale' => array('title' => __('Doanh thu'), 'url' => array('controller' => 'sales', 'action' => 'index')),
+	'sale' => array('title' => __('Doanh thu'), 'url' => array('controller' => 'sale', 'action' => 'index')),
 	'order' => array('title' => __('Bán hàng'), 'url' => array('controller' => 'orders', 'action' => 'index')),
-	'book' => array('title' => __('Đặt chỗ'), 'url' => array('controller' => 'books', 'action' => 'index')),
+	'book' => array('title' => __('Đặt chỗ'), 'url' => array('controller' => 'book', 'action' => 'index')),
 	'store' => array('title' => __('Kho hàng'), 'url' => array('controller' => 'stores', 'action' => 'index')),
-	'menu' => array('title' => __('Thực đơn'), 'url' => array('controller' => 'items', 'action' => 'index')),
+	'menu' => array('title' => __('Thực đơn'), 'url' => array('controller' => 'menu', 'action' => 'index')),
 	'member' => array('title' => __('Nhân viên'), 'url' => array('controller' => 'users', 'action' => 'index')),
 ); 
 if(!isset($this->request->params['admin'])){

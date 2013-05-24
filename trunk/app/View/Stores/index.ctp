@@ -58,3 +58,10 @@
 </div>
  
 <?php echo $this->element('pager') ?>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	window.print();
+});
+//-->
+</script>
